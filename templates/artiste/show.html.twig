@@ -1,0 +1,32 @@
+{% extends 'baseBack.html.twig' %}
+
+
+
+
+{% block body %}
+    <title>Artiste</title>
+    <h1>Artiste</h1>
+
+    <table class="table">
+        <tbody>{#
+            <tr>
+                <th>IdArtiste</th>
+                <td>{{ artiste.idArtiste }}</td>
+            </tr>#}
+            <tr>
+                <th>NomArtiste</th>
+                <td>{{ artiste.nomArtiste }}</td>
+            </tr>
+            <tr>
+                <th>TypeDeMusique</th>
+                <td>{{ artiste.typeDeMusique }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_artiste_index') }}">back to list</a>
+
+    <a href="{{ path('app_artiste_edit', {'idArtiste': artiste.idArtiste}) }}">edit</a>
+
+    {{ include('artiste/_delete_form.html.twig') }}
+{% endblock %}

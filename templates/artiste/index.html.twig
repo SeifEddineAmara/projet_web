@@ -1,0 +1,37 @@
+{% extends 'baseBack.html.twig' %}
+
+
+{% block body %}
+    <title>Artiste index</title>
+    <h1>Artiste index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+{#                <th>IdArtiste</th>#}
+                <th>NomArtiste</th>
+                <th>TypeDeMusique</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for artiste in artistes %}
+            <tr>
+{#                <td>{{ artiste.idArtiste }}</td>#}
+                <td>{{ artiste.nomArtiste }}</td>
+                <td>{{ artiste.typeDeMusique }}</td>
+                <td>
+                    <a href="{{ path('app_artiste_show', {'idArtiste': artiste.idArtiste}) }}">show</a>
+                    <a href="{{ path('app_artiste_edit', {'idArtiste': artiste.idArtiste}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_artiste_new') }}">Create new</a>
+{% endblock %}
