@@ -1,0 +1,159 @@
+{% extends 'base-front.html.twig' %}
+
+{% block title %}TAP&GO Espace Formations{% endblock %}
+
+{% block body %}
+    <body>
+
+        <section class="home-slider owl-carousel">
+            <div class="slider-item" style="background-image: url('{{ asset('front/img/hero_1.jpg') }}');">
+
+                <div class="container">
+                    <div class="row slider-text align-items-center justify-content-center">
+                        <div class="col-md-8 text-center col-sm-12 element-animate">
+                            <h1>TAP&GO</h1>
+                            <p class="mb-5">AVEC TAP&GO , VOUS POUVEZ FAIRE TOUS VOTRE RÉSERVATION EN LIGNE POUR UNE SIMPLE CLICK</p>
+                            <p><a href="#" class="btn btn-white btn-outline-white">Faites Votre Premier Pas</a></p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="slider-item" style="background-image: url('{{ asset('front/img/hero_2.jpg') }}');">
+                <div class="container">
+                    <div class="row slider-text align-items-center justify-content-center">
+                        <div class="col-md-8 text-center col-sm-12 element-animate">
+                            <h1>TAP&GO site de Réservation en Ligne</h1>
+                            <p class="mb-5">Avec TAP&Go vous pouvez S'inscrire au diffèrants cours par des chefs professionnels</p>
+                            <p><a href="#" class="btn btn-white btn-outline-white">Consulter la liste des cours</a></p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+        <!-- END slider -->
+
+
+        <section class="section bg-light element-animate">
+
+
+
+
+        <section class="section element-animate">
+
+            <div class="clearfix mb-5 pb-5">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12 text-center heading-wrap">
+                            <h2>Nos Chefs</h2>
+                            <span class="back-text">Testimonial</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <blockquote class="testimonial">
+                            <p>Le chef multi-étoilé Gordon Ramsay, de renommée internationale, a ouvert une série de restaurants à succès à travers le monde, du Royaume-Uni et de la France à Singapour et aux États-Unis. Gordon est également devenu une star du petit écran au Royaume-Uni et à l'international, avec des émissions telles que Kitchen Nightmares, Hell's Kitchen, Hotel Hell et MasterChef US.</p>
+                            <div class="d-flex author">
+                                <img src={{ asset('front/img/person_1.jpg')}} alt="" class="mr-4">
+                                <div class="author-info">
+                                    <h4>Jorden Ramsey</h4>
+                                    <p>Chef exécutif chez Hell's Kitchen</p>
+                                </div>
+                            </div>
+                        </blockquote>
+                    </div>
+                    <div class="col-md-4">
+                        <blockquote class="testimonial">
+                            <p>est un chef pâtissier-chocolatier français.
+
+                                Héritier de quatre générations de boulangers pâtissiers alsaciens, il est désigné en 2016 meilleur pâtissier du monde par le classement des « World's 50 Best Restaurants »1 réalisé par une société britannique. Il est surnommé le « roi du macaron » ou encore « The Picasso of Pastry » par le magazine Vogue </p>
+                            <div class="d-flex author">
+                                <img src={{ asset('front/img/person_2.jpg')}} alt="" class="mr-4">
+                                <div class="author-info">
+                                    <h4>Pierre Hermé</h4>
+                                    <p>Chef exécutif chez Paris Création</p>
+                                </div>
+                            </div>
+                        </blockquote>
+                    </div>
+                    <div class="col-md-4">
+                        <blockquote class="testimonial">
+                            <p>il devient chef cuisinier et reçoit sa première étoile Michelin à 26 ans, en 2004 ! En 2010, il est nommé chef titulaire du restaurant de l’hôtel AbaC, à Barcelone.
+
+                                Jordi Cruz est connu du grand public depuis son apparition comme membre du jury de l’émission Master Chef diffusée en 2013 en Espagne. La même année, il devient également responsable du Bistrot Altempo et l’enseigne Ten’s Tapas.
+
+                                </p>
+                            <div class="d-flex author">
+                                <img src={{ asset('front/img/person_3.jpg')}} alt="" class="mr-4">
+                                <div class="author-info">
+                                    <h4>Jordi Cruz</h4>
+                                    <p>CEO, XYZ Company</p>
+                                </div>
+                            </div>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </section> <!-- .section -->
+
+            <section class="section element-animate">
+                <div class="clearfix mb-5 pb-5">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12 text-center heading-wrap">
+                                <h2>Notre espace formation </h2>
+                                <span class="back-text">Our Blog</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="blog d-block d-lg-flex">
+                                <div class="bg-image" style="background-image: url('{{ asset('front/img/dishes_1.jpg') }}');"></div>
+                                <div class="text">
+                                    <h3>How to cook beef steak with sauce</h3>
+                                    <p class="sched-time">
+                                        <span><span class="fa fa-calendar"></span> April 22, 2018</span> <br>
+                                    </p>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto illo delectus...</p>
+
+                                    <p><a href="/formations/EspaceFormation" class="btn btn-primary btn-sm">Read More</a></p>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="blog d-block d-lg-flex">
+                                <div class="bg-image" style="background-image: url('{{ asset('front/img/img/dishes_3.jpg') }}');"></div>
+                                <div class="text">
+                                    <h3>How to cook beef steak with sauce</h3>
+                                    <p class="sched-time">
+                                        <span><span class="fa fa-calendar"></span> April 22, 2018</span> <br>
+                                    </p>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto illo delectus...</p>
+
+                                    <p><a href="#" class="btn btn-primary btn-sm">Read More</a></p>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section> <!-- .section -->
+
+
+    </body>
+{% endblock %}

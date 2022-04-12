@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Chefs{% endblock %}
+
+{% block body %}
+
+    <h1>Chefs</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>IdChef</th>
+                <td>{{ chef.idChef }}</td>
+            </tr>
+            <tr>
+                <th>NomChef</th>
+                <td>{{ chef.nomChef }}</td>
+            </tr>
+            <tr>
+                <th>CoursAssocie</th>
+                <td>{{ chef.coursAssocie }}</td>
+            </tr>
+            <tr>
+                <th>AdresseChef</th>
+                <td>{{ chef.adresseChef }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_chefs_index') }}">back to list</a>
+
+    <a href="{{ path('app_chefs_edit', {'idChef': chef.idChef}) }}">edit</a>
+
+    {{ include('chefs/_delete_form.html.twig') }}
+
+{% endblock %}
