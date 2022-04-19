@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20220409221229 extends AbstractMigration
+final class Version20220419011644 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -33,7 +33,7 @@ final class Version20220409221229 extends AbstractMigration
         $this->addSql('CREATE TABLE reservation (Id_Reservation INT AUTO_INCREMENT NOT NULL, Heure INT NOT NULL, Date VARCHAR(225) NOT NULL, Id_Restaurant INT DEFAULT NULL, Id_Table INT DEFAULT NULL, Id_User INT DEFAULT NULL, INDEX Id_Table (Id_Table), INDEX Id_Resaturent (Id_Restaurant), INDEX Id_User (Id_User), PRIMARY KEY(Id_Reservation)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE restaurant (id INT AUTO_INCREMENT NOT NULL, nom VARCHAR(255) NOT NULL, adresse VARCHAR(255) NOT NULL, domaine VARCHAR(255) NOT NULL, owner VARCHAR(225) NOT NULL, nb INT NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE table_restaurant (Id_Table INT AUTO_INCREMENT NOT NULL, Type_Table INT NOT NULL, Id_Restaurant INT DEFAULT NULL, INDEX Id_Restaurent (Id_Restaurant), PRIMARY KEY(Id_Table)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
-        $this->addSql('CREATE TABLE user (id INT AUTO_INCREMENT NOT NULL, name VARCHAR(255) NOT NULL, lastname VARCHAR(255) NOT NULL, email VARCHAR(255) NOT NULL, password VARCHAR(255) NOT NULL, gender VARCHAR(255) NOT NULL, roles JSON NOT NULL, phone INT NOT NULL, birthday DATE NOT NULL, acces VARCHAR(255) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE user (id INT AUTO_INCREMENT NOT NULL, name VARCHAR(255) NOT NULL, lastname VARCHAR(255) NOT NULL, email VARCHAR(255) NOT NULL, password VARCHAR(255) NOT NULL, gender VARCHAR(255) NOT NULL, roles LONGTEXT NOT NULL COMMENT \'(DC2Type:json)\', phone INT NOT NULL, birthday DATE NOT NULL, acces VARCHAR(255) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('ALTER TABLE commentaire ADD CONSTRAINT FK_67F068BC6B3CA4B FOREIGN KEY (id_user) REFERENCES user (id)');
         $this->addSql('ALTER TABLE commentaire ADD CONSTRAINT FK_67F068BCB72EAA8E FOREIGN KEY (id_publication) REFERENCES publication (Id_Publication)');
         $this->addSql('ALTER TABLE cours ADD CONSTRAINT FK_FDCA8C9C114BC970 FOREIGN KEY (ID_Chef) REFERENCES chefs (ID_Chef)');
