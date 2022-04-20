@@ -98,7 +98,7 @@ class AppCustomAuthenticator extends AbstractFormLoginAuthenticator
                 return $role->getRole();
             }, $roles);
 
-            if ($user->getAcces()==1) {
+            if ($user->getAcces()=='oui') {
                 if (in_array('ROLE_ADMIN', $rolesTab, true)) {
                     return new RedirectResponse($this->urlGenerator->generate('app_user_index'));
                 }

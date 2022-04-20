@@ -40,7 +40,7 @@
                         <button class="btn">Delete</button>
                     </form>
                     <a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
-                    <a  class=" {% if user.acces == 0 %} btn btn-success {% else %} btn btn-danger {% endif %}  " href="{{ path('activedesactive', {'id': user.id}) }}">{% if user.acces == 0 %} active {% else %} desactive {% endif %}</a>
+                    <a  class=" {% if user.acces == 'non'%} btn btn-success {% else %} btn btn-danger {% endif %}  " href="{{ path('activedesactive', {'id': user.id}) }}">{% if user.acces == 'non' %} active {% else %} desactive {% endif %}</a>
                 </td>
             </tr>
         {% else %}

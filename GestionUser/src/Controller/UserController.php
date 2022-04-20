@@ -234,10 +234,10 @@ class UserController extends AbstractController
         $user = new User();
         $user=$this->getDoctrine()->getRepository(User::class)->find($id);
 
-        if($user->getAcces()==0) {
-            $user->setAcces(1);
+        if($user->getAcces()=='non') {
+            $user->setAcces('oui');
         }else {
-            $user->setAcces(0);
+            $user->setAcces('non');
         }
 
         $entityManager->persist($user);
