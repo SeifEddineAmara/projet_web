@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/cours")
+ * @Route("/cours" , name="app_cours")
  */
 class CoursController extends AbstractController
 {

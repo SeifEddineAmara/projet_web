@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
 
-    <title>{% block title %}Welcome!{% endblock %}</title>
+    <title>{% block title %}TAP&GO!{% endblock %}</title>
     {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
     {% block stylesheets %}
@@ -37,9 +37,9 @@
             $(document).ready(function() {
                 var unique_id = $.gritter.add({
                     // (string | mandatory) the heading of the notification
-                    title: 'Welcome to Dashio!',
+                    title: 'Welcome to TAP&GO!',
                     // (string | mandatory) the text inside the notification
-                    text: 'Hover me to enable the Close Button. You can hide the left sidebar clicking on the button next to the logo.',
+                    text: 'Vous offre une large gamme des restaurents ',
                     // (string | optional) the image to display on the left
                     image: 'img/ui-sam.jpg',
                     // (bool | optional) if you want it to fade out on its own or just sit there
@@ -351,6 +351,15 @@
 
                 </ul>
             </li>
+            <li class="sub-menu">
+                <a href="javascript:;">
+                    <i class="fa fa-th"></i>
+                    <span>TAP&GO</span>
+                </a>
+                <ul class="sub">
+                    <li><a href="/formations/">TAP&GO</a></li>
+                </ul>
+            </li>
 
 
 
@@ -395,6 +404,8 @@
         </div>
     </footer>
 {% endblock %}
-
+        </div>
+    </section>
+</section>
 </body>
 </html>

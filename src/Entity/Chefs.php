@@ -23,7 +23,7 @@ class Chefs
 
     /**
      * @var string
-     * @Assert\NotBlank(message="name is required")
+     * @Assert\NotBlank(message="le nom doit etre saisie")
      * @ORM\Column(name="Nom_Chef", type="string", length=30, nullable=false)
      */
 
@@ -31,14 +31,14 @@ class Chefs
 
     /**
      * @var string
-     * @Assert\NotBlank(message="Cour is required")
+     * @Assert\NotBlank(message="le cour doit etre saisie")
      * @ORM\Column(name="Cours_Associe", type="string", length=100, nullable=false)
      */
     private $coursAssocie;
 
     /**
      * @var string
-     * @Assert\NotBlank(message="Adress is required")
+     * @Assert\NotBlank(message="l'adresse doit etre saisie")
      * @ORM\Column(name="Adresse_Chef", type="string", length=100, nullable=false)
      */
     private $adresseChef;
