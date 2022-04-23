@@ -29,16 +29,6 @@ class Commentaire
     private $libelleCommentaire;
 
     /**
-     * @var \User
-     *
-     * @ORM\ManyToOne(targetEntity="User")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_user", referencedColumnName="id")
-     * })
-     */
-    private $idUser;
-
-    /**
      * @var \Publication
      *
      * @ORM\ManyToOne(targetEntity="Publication")
@@ -47,6 +37,16 @@ class Commentaire
      * })
      */
     private $idPublication;
+
+    /**
+     * @var \User
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_user", referencedColumnName="id")
+     * })
+     */
+    private $idUser;
 
 
 }

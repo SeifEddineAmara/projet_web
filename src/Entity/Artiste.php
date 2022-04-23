@@ -24,30 +24,22 @@ class Artiste
 
     /**
      * @var string|null
-     * @Assert\Length(
-     *  min = 2,
-     *  max = 30,
-     *  minMessage = "Le nom doit avoir une longueur minimale de {{ limit }} caractères",
-     *  maxMessage = "Le nom doit avoir une longueur maximale de {{ limit }} caractères",
-     *)
-     * @Assert\NotNull
+     * @Assert\NotBlank(message="Nom est obligatoire")
      *
      * @ORM\Column(name="Nom_Artiste", type="string", length=30, nullable=true)
      */
     private $nomArtiste;
 
     /**
-     * @var string|null
+     * @var TypeDeMusique
+     * @Assert\NotBlank(message="Genre de musique est obligatoire")
      *
-     * @ORM\Column(name="Type_De_Musique", type="string", length=20, nullable=true)
+     * @ORM\ManyToOne(targetEntity="TypeDeMusique")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Type_De_Musique", referencedColumnName="id")
+     * })
      */
     private $typeDeMusique;
-
-    /**
-     * @param string|null $nomArtiste
-     * @param string|null $typeDeMusique
-     */
-
 
     /**
      * @return int
@@ -82,19 +74,25 @@ class Artiste
     }
 
     /**
-     * @return string|null
+     * @return TypeDeMusique
      */
-    public function getTypeDeMusique(): ?string
+    public function getTypeDeMusique(): ?TypeDeMusique
     {
         return $this->typeDeMusique;
     }
 
     /**
-     * @param string|null $typeDeMusique
+     * @param TypeDeMusique $typeDeMusique
      */
-    public function setTypeDeMusique(?string $typeDeMusique): void
+    public function setTypeDeMusique(?TypeDeMusique $typeDeMusique): void
     {
         $this->typeDeMusique = $typeDeMusique;
+    }
+
+    public function __toString()
+    {
+        // TODO: Implement __toString() method.
+        return $this->nomArtiste;
     }
 
 

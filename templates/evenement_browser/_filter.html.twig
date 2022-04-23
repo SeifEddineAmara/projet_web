@@ -1,0 +1,22 @@
+{{ form_start(form) }}
+    {{ form_row(form.q) }}
+    <div class="row">
+        <div class="col-md-6">
+            {{ form_row(form.nom) }}
+        </div>
+        <div class="col-md-6">
+            {{ form_row(form.date) }}
+        </div>
+    </div>
+    <div class="row">
+       <div class="col-md-4">
+           {{ form_row(form.artiste) }}
+       </div>
+        <div class="col-md-4">
+            {{ form_row(form.restaurant) }}
+        </div>
+        <div class="col-md-4">
+            <button type="submit" class="btn btn-primary w-30">Recherche</button>
+        </div>
+    </div>
+{{ form_end(form) }}

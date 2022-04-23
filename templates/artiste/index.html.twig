@@ -1,8 +1,9 @@
 {% extends 'baseBack.html.twig' %}
 
-
 {% block body %}
-    <title>Artiste index</title>
+    <a href="{{ path('app_evenement_index') }}">Afficher Evenements</a>
+    <a href="{{ path('app_type_de_musique_index') }}">Afficher Genres</a>
+
     <h1>Artiste index</h1>
 
     <table class="table">
@@ -10,7 +11,7 @@
             <tr>
 {#                <th>IdArtiste</th>#}
                 <th>NomArtiste</th>
-                <th>TypeDeMusique</th>
+                <th>Genre</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -19,7 +20,7 @@
             <tr>
 {#                <td>{{ artiste.idArtiste }}</td>#}
                 <td>{{ artiste.nomArtiste }}</td>
-                <td>{{ artiste.typeDeMusique }}</td>
+                <td>{{ artiste.getTypeDeMusique }}</td>
                 <td>
                     <a href="{{ path('app_artiste_show', {'idArtiste': artiste.idArtiste}) }}">show</a>
                     <a href="{{ path('app_artiste_edit', {'idArtiste': artiste.idArtiste}) }}">edit</a>
@@ -27,7 +28,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">no records found</td>
+                <td colspan="3">no records found</td>
             </tr>
         {% endfor %}
         </tbody>

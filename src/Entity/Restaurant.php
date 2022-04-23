@@ -57,22 +57,6 @@ class Restaurant
     private $nb;
 
     /**
-     * @param string $nom
-     * @param string $adresse
-     * @param string $domaine
-     * @param string $owner
-     * @param int $nb
-     */
-    public function __construct(string $nom, string $adresse, string $domaine, string $owner, int $nb)
-    {
-        $this->nom = $nom;
-        $this->adresse = $adresse;
-        $this->domaine = $domaine;
-        $this->owner = $owner;
-        $this->nb = $nb;
-    }
-
-    /**
      * @return int
      */
     public function getId(): int
@@ -166,6 +150,12 @@ class Restaurant
     public function setNb(int $nb): void
     {
         $this->nb = $nb;
+    }
+
+    public function __toString()
+    {
+        // TODO: Implement __toString() method.
+        return $this->nom;
     }
 
 

@@ -3,7 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Evenement
@@ -24,6 +24,7 @@ class Evenement
 
     /**
      * @var string
+     * @Assert\NotBlank(message="Nom est obligatoire")
      *
      * @ORM\Column(name="Nom_Evenement", type="string", length=20, nullable=false)
      */
@@ -37,38 +38,24 @@ class Evenement
     private $dateEvenement;
 
     /**
-     * @var \Artiste
+     * @var Artiste
      *
      * @ORM\ManyToOne(targetEntity="Artiste")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="Id_Artiste", referencedColumnName="Id_Artiste")
      * })
      */
-    private $idArtiste;
+    private $Artiste;
 
     /**
-     * @var \Restaurant
+     * @var Restaurant
      *
      * @ORM\ManyToOne(targetEntity="Restaurant")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="Id_Restaurant", referencedColumnName="id")
      * })
      */
-    private $idRestaurant;
-
-    /**
-     * @param string $nomEvenement
-     * @param \DateTime|null $dateEvenement
-     * @param \Artiste $idArtiste
-     * @param \Restaurant $idRestaurant
-     */
-    public function __construct(string $nomEvenement, ?\DateTime $dateEvenement, \Artiste $idArtiste, \Restaurant $idRestaurant)
-    {
-        $this->nomEvenement = $nomEvenement;
-        $this->dateEvenement = $dateEvenement;
-        $this->idArtiste = $idArtiste;
-        $this->idRestaurant = $idRestaurant;
-    }
+    private $Restaurant;
 
     /**
      * @return int
@@ -89,7 +76,7 @@ class Evenement
     /**
      * @return string
      */
-    public function getNomEvenement(): string
+    public function getNomEvenement(): ?string
     {
         return $this->nomEvenement;
     }
@@ -97,7 +84,7 @@ class Evenement
     /**
      * @param string $nomEvenement
      */
-    public function setNomEvenement(string $nomEvenement): void
+    public function setNomEvenement(?string $nomEvenement): void
     {
         $this->nomEvenement = $nomEvenement;
     }
@@ -119,35 +106,41 @@ class Evenement
     }
 
     /**
-     * @return \Artiste
+     * @return Artiste
      */
-    public function getIdArtiste(): \Artiste
+    public function getArtiste(): ?Artiste
     {
-        return $this->idArtiste;
+        return $this->Artiste;
     }
 
     /**
-     * @param \Artiste $idArtiste
+     * @param Artiste $Artiste
      */
-    public function setIdArtiste(\Artiste $idArtiste): void
+    public function setArtiste(?Artiste $Artiste): void
     {
-        $this->idArtiste = $idArtiste;
+        $this->Artiste = $Artiste;
     }
 
     /**
-     * @return \Restaurant
+     * @return Restaurant
      */
-    public function getIdRestaurant(): \Restaurant
+    public function getRestaurant(): ?Restaurant
     {
-        return $this->idRestaurant;
+        return $this->Restaurant;
     }
 
     /**
-     * @param \Restaurant $idRestaurant
+     * @param Restaurant $Restaurant
      */
-    public function setIdRestaurant(\Restaurant $idRestaurant): void
+    public function setRestaurant(?Restaurant $Restaurant): void
     {
-        $this->idRestaurant = $idRestaurant;
+        $this->Restaurant = $Restaurant;
+    }
+
+    public function __toString()
+    {
+        // TODO: Implement __toString() method.
+        return $this->nomEvenement;
     }
 
 

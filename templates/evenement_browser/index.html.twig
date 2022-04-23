@@ -1,0 +1,51 @@
+{% extends 'baseFront.html.twig' %}
+
+{% block stylesheets %}
+    <style>
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            grid-gap: 20px;
+        }
+        .gridCarte {
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            grid-gap: 20px;
+        }
+        .gridForm {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            grid-gap: 20px;
+        }
+        .vl {
+            border-left: 6px solid gray;
+            height: 100%;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <section class="section bg-light element-animate">
+        <div class="container">
+            <div class="col-md-12 text-center heading-wrap">
+                <h2>Evenements</h2>
+                {#                <span class="back-text">Events</span>#}
+                <hr>
+
+                <div class="gridForm">
+                    {% include 'evenement_browser/_filter.html.twig' with {form: form} only%}
+                    <a href="{{ path('app_evenement_browser_stats') }}">Statistiques</a>
+                </div>
+
+                <hr>
+                <div class="grid">
+                    {% for evenement in evenements %}
+                        {% include'evenement_browser/_evenementCarte.html.twig' with {evenement : evenement} only %}
+                    {% endfor %}
+                </div>
+
+            </div>
+        </div>
+    </section>
+{#    {{ include('evenement_browser/pieChart.html.twig') }}#}
+{% endblock %}

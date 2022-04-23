@@ -1,0 +1,42 @@
+{{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
+    {{ form_widget(form) }}
+<button class="btn">{{ button_label|default('Recherche') }}</button>
+{{ form_end(form) }}
+
+{#<form method="POST" action="{{ path('recherche') }}" }}>#}
+
+{#    <div>#}
+{#        <span>#}
+{#            <label>Nom Evenement</label>#}
+{#            <input type="text" name="nomEvenement">#}
+{#        </span>#}
+{#        <span>#}
+{#            <label>Date Evenement</label>#}
+{#            <input type="date" name="dateEvenement">#}
+{#        </span>#}
+{#    </div>#}
+
+{#    <div>#}
+{#        <span>#}
+{#            <label>Artiste</label>#}
+{#            <select name="Artiste">#}
+{#                <option value="null"></option>#}
+{#                {% for artiste in artistes %}#}
+{#                    <option value="{{ artiste }}">{{ artiste }}</option>#}
+{#                {% endfor %}#}
+{#            </select>#}
+{#        </span>#}
+{#        <span>#}
+{#            <label>Restaurant</label>#}
+{#            <select name="Restaurant">#}
+{#                <option value="null"></option>#}
+{#                {% for restaurant in restaurants %}#}
+{#                    <option value="{{ restaurant }}">{{ restaurant }}</option>#}
+{#                {% endfor %}#}
+{#            </select>#}
+{#        </span>#}
+{#    </div>#}
+{#    <div>#}
+{#        <input type="submit" value="recherche">#}
+{#    </div>#}
+{#</form>#}

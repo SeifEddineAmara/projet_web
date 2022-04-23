@@ -18,12 +18,15 @@
     <link rel="stylesheet" href="{{ asset('front/fonts/fontawesome/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('front/fonts/flaticons/font/flaticon.css') }}">
 
+
     <!-- Theme Style -->
     <link rel="stylesheet" href="{{ asset('front/css/style.css') }}">
+
+    {% block stylesheets %}{% endblock %}
 </head>
 <body>
 
-<header role="banner">
+<header role="banner" >
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand" href="index.html">Eatery</a>
@@ -56,11 +59,11 @@
 
                     {% if app.user %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ path('app_logout') }}">logout</a>
+{#                            <a class="nav-link" href="{{ path('app_logout') }}">logout</a>#}
                         </li>
                     {% else %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ path('app_login') }}">login</a>
+{#                            <a class="nav-link" href="{{ path('app_login') }}">login</a>#}
                         </li>
                     {% endif %}
                 </ul>
@@ -449,7 +452,7 @@
 <script src="{{ asset('front/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('front/js/owl.carousel.min.js') }}"></script>
 <script src="{{ asset('front/js/jquery.waypoints.min.js') }}"></script>
-
+<script src="{{ asset('front/js/loader.js') }}"></script>
 <script src="{{ asset('front/js/jquery.magnific-popup.min.js') }}"></script>
 <script src="{{ asset('front/js/magnific-popup-options.js') }}"></script>
 

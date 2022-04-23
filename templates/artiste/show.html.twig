@@ -1,25 +1,17 @@
 {% extends 'baseBack.html.twig' %}
 
-
-
-
 {% block body %}
-    <title>Artiste</title>
     <h1>Artiste</h1>
 
     <table class="table">
-        <tbody>{#
+        <tbody>
             <tr>
                 <th>IdArtiste</th>
                 <td>{{ artiste.idArtiste }}</td>
-            </tr>#}
+            </tr>
             <tr>
                 <th>NomArtiste</th>
                 <td>{{ artiste.nomArtiste }}</td>
-            </tr>
-            <tr>
-                <th>TypeDeMusique</th>
-                <td>{{ artiste.typeDeMusique }}</td>
             </tr>
         </tbody>
     </table>

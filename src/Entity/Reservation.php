@@ -46,16 +46,6 @@ class Reservation
     private $idRestaurant;
 
     /**
-     * @var \TableRestaurant
-     *
-     * @ORM\ManyToOne(targetEntity="TableRestaurant")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="Id_Table", referencedColumnName="Id_Table")
-     * })
-     */
-    private $idTable;
-
-    /**
      * @var \User
      *
      * @ORM\ManyToOne(targetEntity="User")
@@ -64,6 +54,16 @@ class Reservation
      * })
      */
     private $idUser;
+
+    /**
+     * @var \TableRestaurant
+     *
+     * @ORM\ManyToOne(targetEntity="TableRestaurant")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Id_Table", referencedColumnName="Id_Table")
+     * })
+     */
+    private $idTable;
 
 
 }
