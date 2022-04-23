@@ -48,5 +48,46 @@ class Commentaire
      */
     private $idUser;
 
+    public function getIdCommentaire(): ?int
+    {
+        return $this->idCommentaire;
+    }
+
+    public function getLibelleCommentaire(): ?string
+    {
+        return $this->libelleCommentaire;
+    }
+
+    public function setLibelleCommentaire(string $libelleCommentaire): self
+    {
+        $this->libelleCommentaire = $libelleCommentaire;
+
+        return $this;
+    }
+
+    public function getIdPublication(): ?Publication
+    {
+        return $this->idPublication;
+    }
+
+    public function setIdPublication(?Publication $idPublication): self
+    {
+        $this->idPublication = $idPublication;
+
+        return $this;
+    }
+
+    public function getIdUser(): ?User
+    {
+        return $this->idUser;
+    }
+
+    public function setIdUser(?User $idUser): self
+    {
+        $this->idUser = $idUser;
+
+        return $this;
+    }
+
 
 }

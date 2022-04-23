@@ -48,5 +48,46 @@ class Reaction
      */
     private $idUser;
 
+    public function getIdReaction(): ?int
+    {
+        return $this->idReaction;
+    }
+
+    public function getTypeReaction(): ?int
+    {
+        return $this->typeReaction;
+    }
+
+    public function setTypeReaction(int $typeReaction): self
+    {
+        $this->typeReaction = $typeReaction;
+
+        return $this;
+    }
+
+    public function getIdPublication(): ?Publication
+    {
+        return $this->idPublication;
+    }
+
+    public function setIdPublication(?Publication $idPublication): self
+    {
+        $this->idPublication = $idPublication;
+
+        return $this;
+    }
+
+    public function getIdUser(): ?User
+    {
+        return $this->idUser;
+    }
+
+    public function setIdUser(?User $idUser): self
+    {
+        $this->idUser = $idUser;
+
+        return $this;
+    }
+
 
 }

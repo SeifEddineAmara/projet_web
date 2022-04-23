@@ -41,5 +41,34 @@ class Inscription
      */
     private $idCour;
 
+    public function getIdInscription(): ?int
+    {
+        return $this->idInscription;
+    }
+
+    public function getId(): ?User
+    {
+        return $this->id;
+    }
+
+    public function setId(?User $id): self
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    public function getIdCour(): ?Cours
+    {
+        return $this->idCour;
+    }
+
+    public function setIdCour(?Cours $idCour): self
+    {
+        $this->idCour = $idCour;
+
+        return $this;
+    }
+
 
 }

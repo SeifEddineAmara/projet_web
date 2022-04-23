@@ -45,5 +45,46 @@ class Cours
      */
     private $idChef;
 
+    public function getIdCour(): ?int
+    {
+        return $this->idCour;
+    }
+
+    public function getNomCour(): ?string
+    {
+        return $this->nomCour;
+    }
+
+    public function setNomCour(string $nomCour): self
+    {
+        $this->nomCour = $nomCour;
+
+        return $this;
+    }
+
+    public function getLibelleCour(): ?string
+    {
+        return $this->libelleCour;
+    }
+
+    public function setLibelleCour(string $libelleCour): self
+    {
+        $this->libelleCour = $libelleCour;
+
+        return $this;
+    }
+
+    public function getIdChef(): ?Chefs
+    {
+        return $this->idChef;
+    }
+
+    public function setIdChef(?Chefs $idChef): self
+    {
+        $this->idChef = $idChef;
+
+        return $this;
+    }
+
 
 }

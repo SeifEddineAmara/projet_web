@@ -29,11 +29,10 @@ class EvenementBrowserController extends AbstractController
         $data = new SearchData();
         $form = $this->createForm(SearchType::class, $data);
         $form->handleRequest($request);
-//        dd($data);
 
         $evenements = $entityManager
             ->getRepository(Evenement::class)
-            ->findAll();
+            ->findSearch();
 
         return $this->render('evenement_browser/index.html.twig', [
             'form' => $form->createView(),

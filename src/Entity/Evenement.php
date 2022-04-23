@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Repository\EvenementRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -9,7 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Evenement
  *
  * @ORM\Table(name="evenement", indexes={@ORM\Index(name="idArtiste", columns={"Id_Artiste"}), @ORM\Index(name="Id_Restaurant", columns={"Id_Restaurant"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass=EvenementRepository::class)
  */
 class Evenement
 {

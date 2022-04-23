@@ -42,5 +42,46 @@ class Plat
      */
     private $menu;
 
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getNom(): ?string
+    {
+        return $this->nom;
+    }
+
+    public function setNom(string $nom): self
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    public function getElement(): ?string
+    {
+        return $this->element;
+    }
+
+    public function setElement(string $element): self
+    {
+        $this->element = $element;
+
+        return $this;
+    }
+
+    public function getMenu(): ?string
+    {
+        return $this->menu;
+    }
+
+    public function setMenu(string $menu): self
+    {
+        $this->menu = $menu;
+
+        return $this;
+    }
+
 
 }

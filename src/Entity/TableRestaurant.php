@@ -38,5 +38,34 @@ class TableRestaurant
      */
     private $idRestaurant;
 
+    public function getIdTable(): ?int
+    {
+        return $this->idTable;
+    }
+
+    public function getTypeTable(): ?int
+    {
+        return $this->typeTable;
+    }
+
+    public function setTypeTable(int $typeTable): self
+    {
+        $this->typeTable = $typeTable;
+
+        return $this;
+    }
+
+    public function getIdRestaurant(): ?Restaurant
+    {
+        return $this->idRestaurant;
+    }
+
+    public function setIdRestaurant(?Restaurant $idRestaurant): self
+    {
+        $this->idRestaurant = $idRestaurant;
+
+        return $this;
+    }
+
 
 }

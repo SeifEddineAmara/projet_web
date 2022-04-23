@@ -45,5 +45,46 @@ class Publication
      */
     private $idUser;
 
+    public function getIdPublication(): ?int
+    {
+        return $this->idPublication;
+    }
+
+    public function getLibellePublication(): ?string
+    {
+        return $this->libellePublication;
+    }
+
+    public function setLibellePublication(string $libellePublication): self
+    {
+        $this->libellePublication = $libellePublication;
+
+        return $this;
+    }
+
+    public function getNbRã©action(): ?int
+    {
+        return $this->nbRã©action;
+    }
+
+    public function setNbRã©action(int $nbRã©action): self
+    {
+        $this->nbRã©action = $nbRã©action;
+
+        return $this;
+    }
+
+    public function getIdUser(): ?User
+    {
+        return $this->idUser;
+    }
+
+    public function setIdUser(?User $idUser): self
+    {
+        $this->idUser = $idUser;
+
+        return $this;
+    }
+
 
 }

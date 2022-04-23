@@ -42,5 +42,46 @@ class Chefs
      */
     private $adresseChef;
 
+    public function getIdChef(): ?int
+    {
+        return $this->idChef;
+    }
+
+    public function getNomChef(): ?string
+    {
+        return $this->nomChef;
+    }
+
+    public function setNomChef(string $nomChef): self
+    {
+        $this->nomChef = $nomChef;
+
+        return $this;
+    }
+
+    public function getCoursAssocie(): ?string
+    {
+        return $this->coursAssocie;
+    }
+
+    public function setCoursAssocie(string $coursAssocie): self
+    {
+        $this->coursAssocie = $coursAssocie;
+
+        return $this;
+    }
+
+    public function getAdresseChef(): ?string
+    {
+        return $this->adresseChef;
+    }
+
+    public function setAdresseChef(string $adresseChef): self
+    {
+        $this->adresseChef = $adresseChef;
+
+        return $this;
+    }
+
 
 }

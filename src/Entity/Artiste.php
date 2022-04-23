@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Repository\ArtisteRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -9,7 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Artiste
  *
  * @ORM\Table(name="artiste")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass=ArtisteRepository::class)
  */
 class Artiste
 {

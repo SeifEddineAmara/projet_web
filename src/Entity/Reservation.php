@@ -65,5 +65,70 @@ class Reservation
      */
     private $idTable;
 
+    public function getIdReservation(): ?int
+    {
+        return $this->idReservation;
+    }
+
+    public function getHeure(): ?int
+    {
+        return $this->heure;
+    }
+
+    public function setHeure(int $heure): self
+    {
+        $this->heure = $heure;
+
+        return $this;
+    }
+
+    public function getDate(): ?string
+    {
+        return $this->date;
+    }
+
+    public function setDate(string $date): self
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    public function getIdRestaurant(): ?Restaurant
+    {
+        return $this->idRestaurant;
+    }
+
+    public function setIdRestaurant(?Restaurant $idRestaurant): self
+    {
+        $this->idRestaurant = $idRestaurant;
+
+        return $this;
+    }
+
+    public function getIdUser(): ?User
+    {
+        return $this->idUser;
+    }
+
+    public function setIdUser(?User $idUser): self
+    {
+        $this->idUser = $idUser;
+
+        return $this;
+    }
+
+    public function getIdTable(): ?TableRestaurant
+    {
+        return $this->idTable;
+    }
+
+    public function setIdTable(?TableRestaurant $idTable): self
+    {
+        $this->idTable = $idTable;
+
+        return $this;
+    }
+
 
 }
