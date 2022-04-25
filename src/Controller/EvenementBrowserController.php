@@ -30,7 +30,6 @@ class EvenementBrowserController extends AbstractController
         $data = new SearchData();
         $form = $this->createForm(SearchType::class, $data);
         $form->handleRequest($request);
-        
 
         $evenements = $repository->findSearch($data);
 
