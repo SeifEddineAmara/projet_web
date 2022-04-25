@@ -7,8 +7,8 @@ use App\Entity\Artiste;
 use App\Entity\Evenement;
 use App\Entity\Restaurant;
 use App\Entity\TypeDeMusique;
-use App\Form\EvenementRecherche;
 use App\Form\SearchType;
+use App\Repository\EvenementRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -24,15 +24,15 @@ class EvenementBrowserController extends AbstractController
     /**
      * @Route("/", name="app_evenement_browser_index", methods={"GET","POST"})
      */
-    public function index(Request $request, EntityManagerInterface $entityManager): Response
+    public function index(Request $request, EntityManagerInterface $entityManager,
+                          EvenementRepository $repository): Response
     {
         $data = new SearchData();
         $form = $this->createForm(SearchType::class, $data);
         $form->handleRequest($request);
+        
 
-        $evenements = $entityManager
-            ->getRepository(Evenement::class)
-            ->findSearch();
+        $evenements = $repository->findSearch($data);
 
         return $this->render('evenement_browser/index.html.twig', [
             'form' => $form->createView(),

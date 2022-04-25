@@ -24,7 +24,9 @@ class EvenementRepository extends ServiceEntityRepository
 
     public function findSearch(SearchData $data) : array
     {
-         
+         $query = $this
+             ->createQueryBuilder('e');
+         return $query->getQuery()->getResult();
     }
 
     /**
