@@ -17,17 +17,11 @@ class SearchType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('q', TextType::class, [
-                'label' => false,
-                'required' => false,
-                'attr' => [
-                    'placeholder' => 'Recherche'
-                ]
-            ])
             ->add('nom', TextType::class, [
                 'required' => false,
             ])
             ->add('date', DateType::class, [
+                'widget' => 'single_text',
                 'required' => false
             ])
             ->add('artiste', EntityType::class, [

@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Data\SearchData;
+use App\Entity\Artiste;
 use App\Entity\Evenement;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
@@ -22,11 +23,39 @@ class EvenementRepository extends ServiceEntityRepository
         parent::__construct($registry, Evenement::class);
     }
 
-    public function findSearch(SearchData $data) : array
+    public function findSearch(SearchData $search) : array
     {
          $query = $this
-             ->createQueryBuilder('e');
+             ->createQueryBuilder('e')
+             ->select('a', 'e')
+             ->join('e.Artiste','a');
+
+         if (!empty($search->nom)) {
+             $query = $query
+                 ->andWhere('e.nomEvenement LIKE :nom')
+                 ->setParameter('nom', "%{$search->nom}%");
+         }
+
+         if (!empty($search->date)){
+             $query = $query
+                 ->andWhere('e.dateEvenement = :date')
+                 ->setParameter('date', "{$search->date->format('Y-m-d')}");
+         }
+
+         if (!empty($search->artiste)) {
+             $query = $query
+                 ->andWhere('e.Artiste = :artiste')
+                 ->setParameter('artiste',$search->artiste);
+         }
+
+        if (!empty($search->restaurant)) {
+            $query = $query
+                ->andWhere('e.Restaurant = :restaurant')
+                ->setParameter('restaurant',$search->restaurant);
+        }
+
          return $query->getQuery()->getResult();
+
     }
 
     /**

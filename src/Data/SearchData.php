@@ -10,11 +10,6 @@ class SearchData
     /**
      * @var string
      */
-    public $q = '';
-
-    /**
-     * @var string
-     */
     public $nom;
 
     /**
