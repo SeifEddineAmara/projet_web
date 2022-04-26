@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Data;
+namespace App\Search;
 
 use App\Entity\Artiste;
 use App\Entity\Restaurant;
 
-class SearchData
+class EvenementSearchData
 {
     /**
      * @var string

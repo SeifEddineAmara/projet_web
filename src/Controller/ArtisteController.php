@@ -4,6 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Artiste;
 use App\Form\ArtisteType;
+use App\Form\SearchArtisteType;
+use App\Repository\ArtisteRepository;
+use App\Search\ArtisteSearchData;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,13 +21,17 @@ class ArtisteController extends AbstractController
     /**
      * @Route("/", name="app_artiste_index", methods={"GET"})
      */
-    public function index(EntityManagerInterface $entityManager): Response
+    public function index(Request $request, EntityManagerInterface $entityManager,
+                          ArtisteRepository $repository): Response
     {
-        $artistes = $entityManager
-            ->getRepository(Artiste::class)
-            ->findAll();
+        $data = new ArtisteSearchData();
+        $form = $this->createForm(SearchArtisteType::class, $data);
+        $form->handleRequest($request);
+
+        $artistes = $repository->findSearch($data);
 
         return $this->render('artiste/index.html.twig', [
+            'form' => $form->createView(),
             'artistes' => $artistes,
         ]);
     }

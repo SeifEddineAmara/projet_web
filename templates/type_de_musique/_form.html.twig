@@ -1,4 +1,21 @@
 {{ form_start(form , {attr: {'novalidate': 'novalidate'}}) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+    <div class="row align-items-center">
+        <div class="col-md-2">
+            <label>Genre</label>
+        </div>
+        <div class="col-md-2">
+            {{ form_row(form.) }}
+        </div>
+    </div>
+
+    <div class="row align-items-center">
+        <div class="col-md-2">
+
+        </div>
+        <div class="col-md-2">
+
+        </div>
+    </div>
+
+    <button class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
 {{ form_end(form) }}

@@ -2,12 +2,12 @@
 
 namespace App\Controller;
 
-use App\Data\SearchData;
+use App\Search\EvenementSearchData;
 use App\Entity\Artiste;
 use App\Entity\Evenement;
 use App\Entity\Restaurant;
 use App\Entity\TypeDeMusique;
-use App\Form\SearchType;
+use App\Form\SearchEvenementType;
 use App\Repository\EvenementRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -27,8 +27,8 @@ class EvenementBrowserController extends AbstractController
     public function index(Request $request, EntityManagerInterface $entityManager,
                           EvenementRepository $repository): Response
     {
-        $data = new SearchData();
-        $form = $this->createForm(SearchType::class, $data);
+        $data = new EvenementSearchData();
+        $form = $this->createForm(SearchEvenementType::class, $data);
         $form->handleRequest($request);
 
         $evenements = $repository->findSearch($data);

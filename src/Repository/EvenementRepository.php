@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-use App\Data\SearchData;
+use App\Search\EvenementSearchData;
 use App\Entity\Artiste;
 use App\Entity\Evenement;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
@@ -23,7 +23,7 @@ class EvenementRepository extends ServiceEntityRepository
         parent::__construct($registry, Evenement::class);
     }
 
-    public function findSearch(SearchData $search) : array
+    public function findSearch(EvenementSearchData $search) : array
     {
          $query = $this
              ->createQueryBuilder('e')
@@ -53,7 +53,7 @@ class EvenementRepository extends ServiceEntityRepository
                 ->andWhere('e.Restaurant = :restaurant')
                 ->setParameter('restaurant',$search->restaurant);
         }
-
+//        dd($query->getQuery()->getResult());
          return $query->getQuery()->getResult();
 
     }

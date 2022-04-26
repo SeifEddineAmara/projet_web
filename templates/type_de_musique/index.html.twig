@@ -1,10 +1,25 @@
 {% extends 'baseBack.html.twig' %}
 
 {% block body %}
-    <a href="{{ path('app_evenement_index') }}">Afficher Evenements</a>
-    <a href="{{ path('app_artiste_index') }}">Afficher Artistes</a>
+    <div class="row align-items-center">
+        <div class="col-md-10">
+            <h1>Genres</h1>
+        </div>
+        <div class="col-md-2">
+            <div>
+                <a href="{{ path('app_evenement_index') }}">Afficher Evenements</a>
+            </div>
+            <div>
+                <a href="{{ path('app_artiste_index') }}">Afficher Artistes</a>
+            </div>
+        </div>
+    </div>
 
-    <h1>TypeDeMusique index</h1>
+    <hr>
+    <div class="row align-items-center">
+        {% include 'type_de_musique/_filter.html.twig' with {form: form} only %}
+    </div>
+    <hr>
 
     <table class="table">
         <thead>
@@ -15,13 +30,13 @@
             </tr>
         </thead>
         <tbody>
-        {% for type_de_musique in type_de_musiques %}
+        {% for typeDeMusique in typesDeMusique %}
             <tr>
-{#                <td>{{ type_de_musique.id }}</td>#}
-                <td>{{ type_de_musique.Genre }}</td>
+{#                <td>{{ typeDeMusique.id }}</td>#}
+                <td>{{ typeDeMusique.Genre }}</td>
                 <td>
-                    <a href="{{ path('app_type_de_musique_show', {'id': type_de_musique.id}) }}">show</a>
-                    <a href="{{ path('app_type_de_musique_edit', {'id': type_de_musique.id}) }}">edit</a>
+                    <a href="{{ path('app_type_de_musique_show', {'id': typeDeMusique.id}) }}">show</a>
+                    <a href="{{ path('app_type_de_musique_edit', {'id': typeDeMusique.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}

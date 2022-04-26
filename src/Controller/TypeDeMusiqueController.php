@@ -3,8 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\TypeDeMusique;
+use App\Form\SearchTypeDeMusiqueType;
 use App\Form\TypeDeMusiqueType;
 use App\Repository\TypeDeMusiqueRepository;
+use App\Search\TypeDeMusiqueSearchData;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,17 +19,25 @@ use Symfony\Component\Routing\Annotation\Route;
 class TypeDeMusiqueController extends AbstractController
 {
     /**
-     * @Route("/", name="app_type_de_musique_index", methods={"GET"})
+     * @Route("/", name="app_type_de_musique_index", methods={"GET", "POST"})
      */
-    public function index(TypeDeMusiqueRepository $typeDeMusiqueRepository): Response
+    public function index(Request $request, EntityManagerInterface $entityManager,
+                          TypeDeMusiqueRepository $repository): Response
     {
+        $data = new TypeDeMusiqueSearchData();
+        $form = $this->createForm(SearchTypeDeMusiqueType::class, $data);
+        $form->handleRequest($request);
+
+        $typesDeMusique = $repository->findSearch($data);
+
         return $this->render('type_de_musique/index.html.twig', [
-            'type_de_musiques' => $typeDeMusiqueRepository->findAll(),
+            'form' => $form->createView(),
+            'typesDeMusique' => $typesDeMusique,
         ]);
     }
 
     /**
-     * @Route("/new", name="app_type_de_musique_new", methods={"GET", "POST"})
+     * @Route("/new", name="app_type_de_musique_new", methods={"GET"})
      */
     public function new(Request $request, TypeDeMusiqueRepository $typeDeMusiqueRepository): Response
     {

@@ -4,6 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Evenement;
 use App\Form\EvenementType;
+use App\Form\SearchEvenementType;
+use App\Repository\EvenementRepository;
+use App\Search\EvenementSearchData;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,13 +21,17 @@ class EvenementController extends AbstractController
     /**
      * @Route("/", name="app_evenement_index", methods={"GET"})
      */
-    public function index(EntityManagerInterface $entityManager): Response
+    public function index(Request $request, EntityManagerInterface $entityManager,
+                          EvenementRepository $repository): Response
     {
-        $evenements = $entityManager
-            ->getRepository(Evenement::class)
-            ->findAll();
+        $data = new EvenementSearchData();
+        $form = $this->createForm(SearchEvenementType::class, $data);
+        $form->handleRequest($request);
+
+        $evenements = $repository->findSearch($data);
 
         return $this->render('evenement/index.html.twig', [
+            'form' => $form->createView(),
             'evenements' => $evenements,
         ]);
     }

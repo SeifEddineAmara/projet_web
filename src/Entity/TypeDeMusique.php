@@ -5,8 +5,10 @@ namespace App\Entity;
 use App\Repository\TypeDeMusiqueRepository;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
+ * @UniqueEntity("Genre", message="Ce genre existe.")
  * @ORM\Entity(repositoryClass=TypeDeMusiqueRepository::class)
  */
 class TypeDeMusique
@@ -21,7 +23,6 @@ class TypeDeMusique
     /**
      * @var string
      * @Assert\NotBlank (message="Le genre doit avoir un nom")
-     * @Assert\Unique
      *
      * @ORM\Column(type="string", unique=true, length=255)
      */

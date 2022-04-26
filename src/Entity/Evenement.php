@@ -34,6 +34,9 @@ class Evenement
     /**
      * @var \DateTime|null
      *
+     * @Assert\NotBlank(message="Date est obligatoire")
+     *
+     *
      * @ORM\Column(name="Date_Evenement", type="date", nullable=true)
      */
     private $dateEvenement;
@@ -42,6 +45,8 @@ class Evenement
      * @var Artiste
      *
      * @ORM\ManyToOne(targetEntity="Artiste")
+     * @Assert\NotBlank(message="Artiste est obligatoire")
+     *
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="Id_Artiste", referencedColumnName="Id_Artiste")
      * })
@@ -52,6 +57,8 @@ class Evenement
      * @var Restaurant
      *
      * @ORM\ManyToOne(targetEntity="Restaurant")
+     * @Assert\NotBlank(message="Restaurant est obligatoire")
+     *
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="Id_Restaurant", referencedColumnName="id")
      * })

@@ -8,16 +8,24 @@
     <table class="table">
         <tbody>
             <tr>
-                <th>IdEvenement</th>
+                <th>Id Evenement</th>
                 <td>{{ evenement.idEvenement }}</td>
             </tr>
             <tr>
-                <th>NomEvenement</th>
+                <th>Nom Evenement</th>
                 <td>{{ evenement.nomEvenement }}</td>
             </tr>
             <tr>
-                <th>DateEvenement</th>
+                <th>Date Evenement</th>
                 <td>{{ evenement.dateEvenement ? evenement.dateEvenement|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Artiste</th>
+                <td>{{ evenement.Artiste }}</td>
+            </tr>
+            <tr>
+                <th>Restaurant</th>
+                <td>{{ evenement.Restaurant }}</td>
             </tr>
         </tbody>
     </table>

@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\TypeDeMusique;
+use App\Search\TypeDeMusiqueSearchData;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
@@ -19,6 +20,19 @@ class TypeDeMusiqueRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, TypeDeMusique::class);
+    }
+
+    public function findSearch(TypeDeMusiqueSearchData $search) : array{
+        $query = $this
+            ->createQueryBuilder('g');
+//        dd($query->getQuery()->getResult());
+        if(!empty($search->Genre)){
+            $query = $query
+                ->andWhere('g.Genre LIKE :genre')
+                ->setParameter('genre', "%{$search->Genre}%");
+        }
+//        dd($query->getQuery());
+        return $query->getQuery()->getResult();
     }
 
     /**

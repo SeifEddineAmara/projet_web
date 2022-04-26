@@ -2,17 +2,32 @@
 
 
 {% block body %}
-    <a href="{{ path('app_artiste_index') }}">Afficher Artistes</a>
-    <a href="{{ path('app_type_de_musique_index') }}">Afficher Genres</a>
+    <div class="row align-items-center">
+        <div class="col-md-10">
+            <h1>Evenements</h1>
+        </div>
+        <div class="col-md-2">
+            <div>
+                <a href="{{ path('app_artiste_index') }}">Afficher Artistes</a>
+            </div>
+            <div>
+                <a href="{{ path('app_type_de_musique_index') }}">Afficher Genres</a>
+            </div>
+        </div>
+    </div>
 
-    <h1>Evenements</h1>
+    <hr>
+    <div class="row align-items-center">
+        {% include 'evenement/_filter.html.twig' with {form: form} only %}
+    </div>
+    <hr>
 
     <table class="table">
         <thead>
             <tr>
 {#                <th>IdEvenement</th>#}
-                <th>NomEvenement</th>
-                <th>DateEvenement</th>
+                <th>Nom</th>
+                <th>Date</th>
                 <th>Artiste</th>
                 <th>Restaurant</th>
                 <th>actions</th>

@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Data\SearchData;
+use App\Search\EvenementSearchData;
 use App\Entity\Artiste;
 use App\Entity\Restaurant;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -12,7 +12,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class SearchType extends AbstractType
+class SearchEvenementType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -40,7 +40,7 @@ class SearchType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-           'data_class' => SearchData::class,
+           'data_class' => EvenementSearchData::class,
            'method' => 'GET',
            'csrf_protection' => false
         ]);
