@@ -1,0 +1,175 @@
+{% extends 'baseFront.html.twig' %}
+
+{% block titre %} register {% endblock %}
+
+{% block body %}
+    <style>
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    </style>
+
+
+
+
+
+
+
+    <section class="home-slider-loop-false  inner-page owl-carousel">
+        <div class="slider-item" style="background-image: url('{{ asset('front/img/reserverHome.jpg') }}');">
+
+            <div class="container">
+                <div class="row slider-text align-items-center justify-content-center">
+                    <div class="col-md-8 text-center col-sm-12 element-animate">
+                        <h1>Espace Reservation</h1>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="section element-animate">
+        <div class="clearfix mb-5 pb-5">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12 text-center heading-wrap">
+                        <h2>Reserver votre table</h2>
+                        <span class="back-text">Espace Reservation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- start Gist JS code-->
+        <script>
+            (function(d,h,w){var gist=w.gist=w.gist||[];gist.methods=['trackPageView','identify','track','setAppId'];gist.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);gist.push(e);return gist;}};for(var i=0;i<gist.methods.length;i++){var c=gist.methods[i];gist[c]=gist.factory(c)}s=d.createElement('script'),s.src="https://widget.getgist.com",s.async=!0,e=d.getElementsByTagName(h)[0],e.appendChild(s),s.addEventListener('load',function(e){},!1),gist.setAppId("vnutkghd"),gist.trackPageView()})(document,'head',window);
+        </script>
+        <!-- end Gist JS code-->
+
+
+
+
+        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+            <div class="owl-carousel centernonloop">
+                <a href="{{ path('app_table_restaurant_show',{'idTable':23}) }}" class="item-dishes">
+                    <div class="text">
+                        <p class="dishes-price">2p</p>
+                        <h2 class="dishes-heading">Table de 2 personnes</h2>
+                    </div>
+                    <img src="{{ asset('front/img/table2_2.jpg') }}" alt="" class="img-fluid">
+                </a>
+                <a href="{{ path('app_table_restaurant_show',{'idTable':24}) }}" class="item-dishes">
+                    <div class="text">
+                        <p class="dishes-price">4p</p>
+                        <h2 class="dishes-heading">Table de 4 personnes</h2>
+                    </div>
+                    <img src="{{ asset('front/img/table4.jpg') }}" alt="" class="img-fluid">
+                </a>
+                <a href="{{ path('app_table_restaurant_show',{'idTable':25}) }}" class="item-dishes">
+                    <div class="text">
+                        <p class="dishes-price">6p</p>
+                        <h2 class="dishes-heading">Table de 6 personnes</h2>
+                    </div>
+                    <img src="{{ asset('front/img/table6.jpg') }}" alt="" class="img-fluid">
+                </a>
+                <a href="{{ path('app_table_restaurant_show',{'idTable':26}) }}" class="item-dishes">
+                    <div class="text">
+                        <p class="dishes-price">8p</p>
+                        <h2 class="dishes-heading">Table de 8 personnes</h2>
+                    </div>
+                    <img src="{{ asset('front/img/table8.jpg') }}" alt="" class="img-fluid">
+                </a>
+            </div>
+        </section> <!-- .section -->
+
+
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    {{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+                    <div  class="row">
+                        <div  class="col-md-6 form-group ">
+                            <label for="heure">Heure</label>
+                            {{ form_errors(form.heure) }}
+                            {{ form_widget(form.heure,{'attr': {'class': 'form-control ' , 'placeholder' : 'Heure'}}) }}
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label for="date">Date</label>
+                            {{ form_errors(form.date) }}
+                            {{ form_widget(form.date,{'attr': {'class': 'form-control ' , 'placeholder' : 'Date'}}) }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            <label for="Restaurant">Restaurant</label>
+                            {{ form_errors(form.idRestaurant) }}
+                            {{ form_widget(form.idRestaurant,{'attr': {'class': 'form-control ' , 'placeholder' : 'idRestaurant'}}) }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            <label for="User">User</label>
+                            {{ form_errors(form.idUser) }}
+                            {{ form_widget(form.idUser,{'attr': {'class': 'form-control ' , 'placeholder' : 'idUser'}}) }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            <label for="Table">Table</label>
+                            {{ form_errors(form.idTable) }}
+                            {{ form_widget(form.idTable,{'attr': {'class': 'form-control ' , 'placeholder' : 'idTable'}}) }}
+                        </div>
+                    </div>
+
+
+
+
+
+
+                    <button class="btn btn-primary">{{ button_label|default('Reserver') }}</button>
+
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+
+
+    <div class="container">
+        <div class="row slider-text align-items-center justify-content-center">
+            <div class="col-md-8 text-center col-sm-12 element-animate">
+                <h1>Translation</h1>
+                <!-- start Google translate code-->
+                <div id="google_translate_element"></div>
+                <script type="text/javascript">
+                    function googleTranslateElementInit() {
+                        new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+                    }
+                </script>
+                <!-- end Google translate code-->
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+    </section>
+
+
+
+{% endblock %}

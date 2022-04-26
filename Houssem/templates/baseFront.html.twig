@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title> {%  block titre %}Eatery Colorlib Website Template {% endblock %}</title>
+    <title> {%  block titre %} Tap&Go {% endblock %}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -26,7 +26,7 @@
 <header role="banner">
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="index.html">Eatery</a>
+            <a class="navbar-brand" href="index.html">Tap&go</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -34,10 +34,10 @@
             <div class="collapse navbar-collapse" id="navbarsExample05">
                 <ul class="navbar-nav ml-auto pl-lg-5 pl-0">
                     <li class="nav-item">
-                        <a class="nav-link active" href="index.html">Home</a>
+                        <a class="nav-link active" href=/home>Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="recipes.html">Recipes</a>
+                        <a class="nav-link" href="{{ path ('app_home_reservation_reserver') }}">Reserver</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="services.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Services</a>
@@ -382,6 +382,7 @@
     </section>
 {% endblock %}
 
+{% block footer %}
 <footer class="site-footer" role="contentinfo">
     <div class="container">
         <div class="row mb-5">
@@ -434,6 +435,7 @@
         </div>
     </div>
 </footer>
+{% endblock %}
 <!-- END footer -->
 
 <!-- loader -->

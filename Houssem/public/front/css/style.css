@@ -9,6 +9,7 @@ body {
   font-size: 15px;
   line-height: 1.8;
   color: #868e96;
+  min-height: 100vh;
 }
 
 a {
@@ -103,14 +104,6 @@ header {
   padding: 0px 0;
 }
 
-footer {
-  position: fixed;
-  height: 50px;
-  bottom: 0px;
-  left: 0px;
-  right: 0px;
-  margin-bottom: 0px;
-}
 
 @media (min-width: 768px) {
   header {

@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\TableRestaurant;
 use App\Form\TableRestaurantType;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,11 +19,17 @@ class TableRestaurantController extends AbstractController
     /**
      * @Route("/", name="app_table_restaurant_index", methods={"GET"})
      */
-    public function index(EntityManagerInterface $entityManager): Response
+    public function index(Request $request , EntityManagerInterface $entityManager,PaginatorInterface $paginator): Response
     {
-        $tableRestaurants = $entityManager
+        $XX = $entityManager
             ->getRepository(TableRestaurant::class)
             ->findAll();
+
+        $tableRestaurants = $paginator->paginate(
+            $XX,
+            $request->query->getInt('page',1),
+            10
+        ) ;
 
         return $this->render('table_restaurant/index.html.twig', [
             'table_restaurants' => $tableRestaurants,
@@ -34,19 +41,19 @@ class TableRestaurantController extends AbstractController
      */
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
-        $tableRestaurant = new TableRestaurant();
-        $form = $this->createForm(TableRestaurantType::class, $tableRestaurant);
+        $tableRestaurants = new TableRestaurant();
+        $form = $this->createForm(TableRestaurantType::class, $tableRestaurants);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($tableRestaurant);
+            $entityManager->persist($tableRestaurants);
             $entityManager->flush();
 
             return $this->redirectToRoute('app_table_restaurant_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('table_restaurant/new.html.twig', [
-            'table_restaurant' => $tableRestaurant,
+            'table_restaurant' => $tableRestaurants,
             'form' => $form->createView(),
         ]);
     }

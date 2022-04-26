@@ -41,7 +41,7 @@ class TableRestaurant
 
     public function getIdTable(): ?int
     {
-        return $this->idTable;
+        return $this->idTable.$this->typeTable;
     }
 
     public function getTypeTable(): ?int
@@ -71,5 +71,6 @@ class TableRestaurant
     public function __toString() :string {
         return $this->getIdRestaurant()->getNom();
     }
+
 
 }

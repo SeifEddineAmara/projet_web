@@ -1,3 +1,4 @@
+{% if form is defined %}
 {{form_start(form,{'attr':{'novalidate':'novalidate'}})}}
 
 <table>
@@ -18,13 +19,7 @@
         <td> {{ form_errors(form.date) }}</td>
     </tr>
 
-    <tr>
-        <td>{{ form_label(form.idRestaurant) }} </td>
-        <td>{{ form_widget(form.idRestaurant) }}</td>
-    </tr>
-    <tr>
-        <td> {{ form_errors(form.idRestaurant) }}</td>
-    </tr>
+
 
     <tr>
         <td>{{ form_label(form.idRestaurant) }} </td>
@@ -53,3 +48,4 @@
 </table>
 <button class="btn">{{ button_label|default('Make Reservation') }}</button>
 {{ form_end(form) }}
+{% endif %}

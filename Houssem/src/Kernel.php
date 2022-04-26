@@ -51,4 +51,13 @@ class Kernel extends BaseKernel
         $routes->import($confDir.'/{routes}/*'.self::CONFIG_EXTS, '/', 'glob');
         $routes->import($confDir.'/{routes}'.self::CONFIG_EXTS, '/', 'glob');
     }
+
+    public function registerBundles1()
+    {
+        $bundles = array(
+            // ...
+            new CMEN\GoogleChartsBundle\CMENGoogleChartsBundle(),
+        );
+    }
+
 }
