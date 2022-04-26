@@ -21,7 +21,7 @@ class TypeDeMusique
     /**
      * @var string
      * @Assert\NotBlank (message="Le genre doit avoir un nom")
-     *
+     * @Assert\Unique
      *
      * @ORM\Column(type="string", unique=true, length=255)
      */
