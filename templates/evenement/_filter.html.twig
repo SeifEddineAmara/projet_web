@@ -1,16 +1,16 @@
 {{ form_start(form, {attr: {'novalidate': 'novalidate'}}) }}
     <div class="row align-items-center">
         <div class="col-md-2">
-            {{ form_row(form.nom) }}
+            {{ form_row(form.nom, {'label': false}) }}
         </div>
         <div class="col-md-2">
-            {{ form_row(form.date) }}
+            {{ form_row(form.date, {'label': false}) }}
         </div>
         <div class="col-md-2">
-            {{ form_row(form.artiste) }}
+            {{ form_row(form.artiste, {'label': false}) }}
         </div>
         <div class="col-md-3">
-            {{ form_row(form.restaurant) }}
+            {{ form_row(form.restaurant, {'label': false}) }}
         </div>
         <div class="col-md-1">
             <button type="submit" class="btn btn-primary w-100">Recherche</button>

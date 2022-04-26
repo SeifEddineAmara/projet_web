@@ -15,6 +15,9 @@ class SearchTypeDeMusiqueType extends AbstractType
         $builder
             ->add('Genre', TextType::class,[
                 'required' => false,
+                'attr' => [
+                    'placeholder' => 'Genre'
+                ]
             ])
         ;
     }

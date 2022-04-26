@@ -38,8 +38,8 @@
                 <td>{{ artiste.nomArtiste }}</td>
                 <td>{{ artiste.getTypeDeMusique }}</td>
                 <td>
-                    <a href="{{ path('app_artiste_show', {'idArtiste': artiste.idArtiste}) }}">show</a>
-                    <a href="{{ path('app_artiste_edit', {'idArtiste': artiste.idArtiste}) }}">edit</a>
+                    <a href="{{ path('app_artiste_show', {'idArtiste': artiste.idArtiste}) }}">Afficher</a>
+                    <a href="{{ path('app_artiste_edit', {'idArtiste': artiste.idArtiste}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
@@ -50,5 +50,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_artiste_new') }}">Create new</a>
+    <a href="{{ path('app_artiste_new') }}">Créer</a>
 {% endblock %}

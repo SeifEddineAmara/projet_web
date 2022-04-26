@@ -19,6 +19,9 @@ class SearchEvenementType extends AbstractType
         $builder
             ->add('nom', TextType::class, [
                 'required' => false,
+                'attr' => [
+                    'placeholder' => 'Nom Evenement'
+                ]
             ])
             ->add('date', DateType::class, [
                 'widget' => 'single_text',

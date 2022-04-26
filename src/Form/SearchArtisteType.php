@@ -17,6 +17,9 @@ class SearchArtisteType extends AbstractType
         $builder
             ->add('nom', TextType::class, [
                 'required' => false,
+                'attr' => [
+                    'placeholder' => 'nom'
+                ]
             ])
             ->add('Genre', EntityType::class, [
                 'class' => TypeDeMusique::class,
