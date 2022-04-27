@@ -15,7 +15,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use CMEN\GoogleChartsBundle\GoogleCharts\Charts\Material\BarChart;
-
+use Dompdf\Dompdf;
+use Dompdf\Options;
 /**
  * @Route("/user")
  */
@@ -275,5 +276,48 @@ class UserController extends AbstractController
 
     }
 
+
+    /**
+     * @param Request $request
+     * @return Response
+     * @Route ("/userajax/aa",name="searchuserrr")
+     */
+    public function searchuser(Request $request,UserRepository $userRepository)
+    {
+        $repository = $this->getDoctrine()->getRepository(User::class);
+        $requestString=$request->get('searchValue');
+        $rdv = $userRepository->findrdvBydate($requestString);
+        return $this->render('user/userajax.html.twig' ,[
+            "users"=>$rdv,
+        ]);
+    }
+
+    /**
+     * @Route("/pdf/user", name="imprimer", methods={"GET"})
+     */
+    public function pdf(UserRepository $userRepository): Response
+    {
+
+        $pdfOptions = new Options();
+        $pdfOptions->set('defaultFont', 'Arial');
+
+        $dompdf = new Dompdf($pdfOptions);
+
+        $html = $this->renderView('user/pdf.html.twig', [
+            'users' => $userRepository->findAll(),
+        ]);
+
+        $dompdf->loadHtml($html);
+
+
+        $dompdf->setPaper('A4', 'portrait');
+
+        $dompdf->render();
+
+
+        $dompdf->stream("mypdf.pdf", [
+            "Attachment" => true
+        ]);
+    }
 
 }

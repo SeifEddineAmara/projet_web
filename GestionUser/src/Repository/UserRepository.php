@@ -95,4 +95,14 @@ class UserRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    public function findrdvBydate($produit)
+    {
+        return $this->createQueryBuilder('r')
+            ->where('r.name Like :name')
+            ->setParameter('name', '%'.$produit.'%')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
 }

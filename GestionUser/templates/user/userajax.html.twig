@@ -1,0 +1,26 @@
+{% for user in users %}
+    <tr>
+        <td>{{ user.id }}</td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.lastname }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.password }}</td>
+        <td>{{ user.gender }}</td>
+        <td>{{ user.roles[0] }}</td>
+        <td>{{ user.phone }}</td>
+        <td>{{ user.birthday ? user.birthday|date('Y-m-d') : '' }}</td>
+        <td>{{ user.acces }}</td>
+        <td>
+            <form method="post" action="{{ path('app_user_delete', {'id': user.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user.id) }}">
+                <button class="btn">Delete</button>
+            </form>
+            <a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
+            <a  class=" {% if user.acces == 'non'%} btn btn-success {% else %} btn btn-danger {% endif %}  " href="{{ path('activedesactive', {'id': user.id}) }}">{% if user.acces == 'non' %} active {% else %} desactive {% endif %}</a>
+        </td>
+    </tr>
+{% else %}
+    <tr>
+        <td colspan="11">no records found</td>
+    </tr>
+{% endfor %}
