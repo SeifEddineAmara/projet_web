@@ -33,6 +33,12 @@ class User
      *
      * @ORM\Column(name="lastname", type="string", length=255, nullable=false)
      */
+
+    public function __toString() :string {
+        return $this->name;
+    }
+
+
     private $lastname;
 
     /**

@@ -5,8 +5,11 @@ namespace App\Controller;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 use Psr\Container\ContainerInterface;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
 
 
@@ -27,26 +30,31 @@ class FormationsController extends AbstractController
     /**
      * @Route("/formations/EspaceFormation")
      */
-    public function EspaceFormations(): Response {
+    public function EspaceFormations(): Response
+    {
 
-        return $this->render('Formations/EspaceFormation.html.twig', ['controller_name' =>'FormationsController',]);
+        return $this->render('Formations/EspaceFormation.html.twig', ['controller_name' => 'FormationsController',]);
     }
-    /**
-     * @Route("/formations/Inscription")
-     */
-    public function Inscription(): Response {
-
-        return $this->render('Formations/Inscription.html.twig', ['controller_name' =>'FormationsController',]);
-    }
-
 
     /**
      * @Route("/formations/Inscription")
      */
-    public function ExporterPDF(): Response {
+    public function Inscription(): Response
+    {
 
-        return $this->render('Formations/Inscription.html.twig', ['controller_name' =>'FormationsController',]);
+        return $this->render('Formations/Inscription.html.twig', ['controller_name' => 'FormationsController',]);
     }
+
+
+    /**
+     * @Route("/formations/Inscription")
+     */
+    public function ExporterPDF(): Response
+    {
+
+        return $this->render('Formations/Inscription.html.twig', ['controller_name' => 'FormationsController',]);
+    }
+
     /**
      * @Route("/formations/Inscription/Download", name="formations_download")
      */
@@ -87,4 +95,38 @@ class FormationsController extends AbstractController
         return new Response();
     }
 
+
+    /**
+     * @Route("/formations/Inscription/pdf")
+     */
+    public function PDF(): Response
+    {
+
+        return $this->render('Formations/pdf.html.twig', ['controller_name' => 'FormationsController',]);
+    }
+
+    /**
+     * @Route("/formations/SendMail")
+     * @throws \Symfony\Component\Mailer\Exception\TransportExceptionInterface
+     */
+    public function Reservation(MailerInterface $mailer)
+    {
+
+        $email = (new TemplatedEmail())
+            ->from('3a5pidev@gmail.com')
+            ->to('zaiemchams10@gmail.com')
+            ->subject("Cour envoyée avec succée")
+            ->htmlTemplate('formations/EnvoyerMail.html.twig')
+            ->context([
+                'formations' => "utlisateur inscrit"
+            ])
+        ;;
+        $mailer->send($email);
+
+
+        // ...
+    }
 }
+
+
+

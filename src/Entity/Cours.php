@@ -33,6 +33,7 @@ class Cours
      * @Assert\NotBlank(message="le libelle du cour doit étre saisie")
      * @ORM\Column(name="Libelle_Cour", type="text", length=65535, nullable=false)
      */
+
     private $libelleCour;
 
     /**

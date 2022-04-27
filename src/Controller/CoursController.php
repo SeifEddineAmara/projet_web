@@ -2,8 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Chefs;
 use App\Entity\Cours;
+use App\Entity\PropertySearch;
 use App\Form\CoursType;
+use App\Form\PropertySearchType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -11,21 +14,46 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/cours" , name="app_cours")
+ * @Route("/cours")
  */
+
 class CoursController extends AbstractController
 {
     /**
-     * @Route("/", name="app_cours_index", methods={"GET"})
+     * @Route("/", name="app_cours_index")
      */
-    public function index(EntityManagerInterface $entityManager): Response
+    public function index(Request $request,EntityManagerInterface $entityManager): Response
     {
-        $cours = $entityManager
-            ->getRepository(Cours::class)
-            ->findAll();
+        $propertySearch = new PropertySearch();
+        $form = $this->createForm(PropertySearchType::class,$propertySearch);
+        $form->handleRequest($request);
 
-        return $this->render('cours/index.html.twig', [
-            'cours' => $cours,
+        $cours = [];
+
+        if($form->isSubmitted() && $form->isValid()) {
+            //on récupère le nom d'article tapé dans le formulaire
+            $nom = $propertySearch->getNom();
+            if ($nom!="")
+                //si on a fourni un nom d'article on affiche tous les articles ayant ce nom
+                $cours= $this->getDoctrine()->getRepository(Cours::class)->findBy(['nomCour' => $nom] );
+            else
+                //si si aucun nom n'est fourni on affiche tous les articles
+                $cours= $this->getDoctrine()->getRepository(Cours::class)->findAll();
+        }
+
+        //$donnes = $entityManager
+        //  ->getRepository(Chefs::class)
+        //->findAll();
+        //$chef = $paginator->paginate(
+        //  $donnes,
+        // $request->query->getInt('page',1),2
+        //) ;
+        //$cours = $entityManager
+          //  ->getRepository(Cours::class)
+            //->findAll();
+
+        return $this->render('cours/index.html.twig', ['form' =>$form->createView(),
+            'cours'=>$cours,
         ]);
     }
 

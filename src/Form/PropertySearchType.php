@@ -2,28 +2,24 @@
 
 namespace App\Form;
 
-use App\Entity\Chefs;
+use App\Entity\PropertySearch;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ChefsType extends AbstractType
+class PropertySearchType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('nomChef')
-            ->add('coursAssocie')
-            ->add('adresseChef')
-            ->add('submit', SubmitType::class)
+            ->add('nom')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Chefs::class,
+            'data_class' => PropertySearch::class,
         ]);
     }
 }

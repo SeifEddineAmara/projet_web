@@ -5,10 +5,13 @@ namespace App\Controller;
 use App\Entity\Chefs;
 use App\Form\ChefsType;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Form\PropertySearchType;
+use App\Entity\PropertySearch;
 
 /**
  * @Route("/chefs")
@@ -16,18 +19,43 @@ use Symfony\Component\Routing\Annotation\Route;
 class ChefsController extends AbstractController
 {
     /**
-     * @Route("/", name="app_chefs_index", methods={"GET"})
+     * @Route("/", name="app_chefs_index")
+     * @param Request $request
+     * @param $nomChef
+     * @return Response
      */
-    public function index(EntityManagerInterface $entityManager): Response
+    public function index(Request $request, EntityManagerInterface $entityManager, PaginatorInterface $paginator): Response
     {
-        $chefs = $entityManager
-            ->getRepository(Chefs::class)
-            ->findAll();
+        $propertySearch = new PropertySearch();
+        $form = $this->createForm(PropertySearchType::class,$propertySearch);
+        $form->handleRequest($request);
 
-        return $this->render('chefs/index.html.twig', [
-            'chefs' => $chefs,
+        $chefs = [];
+
+        if($form->isSubmitted() && $form->isValid()) {
+            //on récupère le nom d'article tapé dans le formulaire
+            $nom = $propertySearch->getNom();
+            if ($nom!="")
+                //si on a fourni un nom d'article on affiche tous les articles ayant ce nom
+               $chefs= $this->getDoctrine()->getRepository(Chefs::class)->findBy(['nomChef' => $nom] );
+            else
+                //si si aucun nom n'est fourni on affiche tous les articles
+                $chefs= $this->getDoctrine()->getRepository(Chefs::class)->findAll();
+        }
+
+        //$donnes = $entityManager
+          //  ->getRepository(Chefs::class)
+            //->findAll();
+        //$chef = $paginator->paginate(
+          //  $donnes,
+           // $request->query->getInt('page',1),2
+        //) ;
+        return $this->render('chefs/index.html.twig', ['form' =>$form->createView(),
+            'chefs'=>$chefs,
         ]);
+
     }
+    
 
     /**
      * @Route("/new", name="app_chefs_new", methods={"GET", "POST"})
