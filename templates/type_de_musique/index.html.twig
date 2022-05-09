@@ -5,14 +5,6 @@
         <div class="col-md-10">
             <h1>Genres</h1>
         </div>
-        <div class="col-md-2">
-            <div>
-                <a href="{{ path('app_evenement_index') }}">Afficher Evenements</a>
-            </div>
-            <div>
-                <a href="{{ path('app_artiste_index') }}">Afficher Artistes</a>
-            </div>
-        </div>
     </div>
 
     <hr>
@@ -35,8 +27,8 @@
 {#                <td>{{ typeDeMusique.id }}</td>#}
                 <td>{{ typeDeMusique.Genre }}</td>
                 <td>
-                    <a href="{{ path('app_type_de_musique_show', {'id': typeDeMusique.id}) }}">Afficher</a>
-                    <a href="{{ path('app_type_de_musique_edit', {'id': typeDeMusique.id}) }}">Modifier</a>
+                    <a href="{{ path('app_type_de_musique_show', {'id': typeDeMusique.id}) }}"><button class="btn btn-success btn-xs"><i class="fa fa-info"></i></button></a>
+                    <a href="{{ path('app_type_de_musique_edit', {'id': typeDeMusique.id}) }}"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
                 </td>
             </tr>
         {% else %}

@@ -3,7 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Chefs
  *
@@ -23,24 +23,29 @@ class Chefs
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank(message="le nom doit etre saisie")
      * @ORM\Column(name="Nom_Chef", type="string", length=30, nullable=false)
      */
+
     private $nomChef;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank(message="le cour doit etre saisie")
      * @ORM\Column(name="Cours_Associe", type="string", length=100, nullable=false)
      */
     private $coursAssocie;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank(message="l'adresse doit etre saisie")
      * @ORM\Column(name="Adresse_Chef", type="string", length=100, nullable=false)
      */
     private $adresseChef;
+
+    public function __toString() :string {
+        return $this->nomChef;
+    }
 
     public function getIdChef(): ?int
     {

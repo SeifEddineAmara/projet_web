@@ -6,14 +6,6 @@
         <div class="col-md-10">
             <h1>Evenements</h1>
         </div>
-        <div class="col-md-2">
-            <div>
-                <a href="{{ path('app_artiste_index') }}">Afficher Artistes</a>
-            </div>
-            <div>
-                <a href="{{ path('app_type_de_musique_index') }}">Afficher Genres</a>
-            </div>
-        </div>
     </div>
 
     <hr>
@@ -42,8 +34,8 @@
                 <td>{{ evenement.getArtiste() }}</td>
                 <td>{{ evenement.getRestaurant() }}</td>
                 <td>
-                    <a href="{{ path('app_evenement_show', {'idEvenement': evenement.idEvenement}) }}">Afficher</a>
-                    <a href="{{ path('app_evenement_edit', {'idEvenement': evenement.idEvenement}) }}">Modifier</a>
+                    <a href="{{ path('app_evenement_show', {'idEvenement': evenement.idEvenement}) }}"><button class="btn btn-success btn-xs"><i class="fa fa-info"></i></button></a>
+                    <a href="{{ path('app_evenement_edit', {'idEvenement': evenement.idEvenement}) }}"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
                 </td>
             </tr>
         {% else %}
