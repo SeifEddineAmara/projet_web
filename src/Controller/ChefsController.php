@@ -24,6 +24,7 @@ class ChefsController extends AbstractController
      * @param $nomChef
      * @return Response
      */
+
     public function index(Request $request, EntityManagerInterface $entityManager, PaginatorInterface $paginator): Response
     {
         $propertySearch = new PropertySearch();

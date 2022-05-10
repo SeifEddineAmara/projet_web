@@ -34,8 +34,8 @@
                 <td>{{ cour.nomCour }}</td>
                 <td>{{ cour.libelleCour }}</td>
                 <td>
-                    <a href="{{ path('app_cours_show', {'idCour': cour.idCour}) }}"><button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button></a>
-                    <a href="{{ path('app_cours_edit', {'idCour': cour.idCour}) }}"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
+                    <a href="{{ path('app_cours_show', {'idCour': cour.idCour}) }}"><button class="btn btn-success btn-xs"><i class="fa fa-check">Show</i></button></a>
+                    <a href="{{ path('app_cours_edit', {'idCour': cour.idCour}) }}"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil">Edit</i></button></a>
                 </td>
             </tr>
         {% else %}

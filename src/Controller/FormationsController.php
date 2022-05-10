@@ -109,7 +109,7 @@ class FormationsController extends AbstractController
      * @Route("/formations/SendMail")
      * @throws \Symfony\Component\Mailer\Exception\TransportExceptionInterface
      */
-    public function Reservation(MailerInterface $mailer)
+    public function EnvoyerMail(MailerInterface $mailer)
     {
 
         $email = (new TemplatedEmail())
@@ -125,6 +125,9 @@ class FormationsController extends AbstractController
 
 
         // ...
+        return $this->render('formations/index.html.twig', [
+            'controller_name' => 'FormationsController',
+        ]);
     }
 }
 

@@ -17,8 +17,8 @@
             <tr>
                 <td>{{ inscription.idInscription }}</td>
                 <td>
-                    <a href="{{ path('app_inscription_show', {'idInscription': inscription.idInscription}) }}">show</a>
-                    <a href="{{ path('app_inscription_edit', {'idInscription': inscription.idInscription}) }}">edit</a>
+                    <a href="{{ path('app_inscription_show', {'idInscription': inscription.idInscription}) }}"><button class="btn btn-success btn-xs"><i class="fa fa-check">Show</i></button></a>
+                    <a href="{{ path('app_inscription_edit', {'idInscription': inscription.idInscription}) }}"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil">Edit</i></button></a>
                 </td>
             </tr>
         {% else %}
