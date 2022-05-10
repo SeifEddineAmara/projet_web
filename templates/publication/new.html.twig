@@ -1,0 +1,14 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}New Publication{% endblock %}
+
+{% block body %}
+    <br>
+    <br>
+    <br>
+    <br>
+   <div style="margin-left: 250px"> <h1>Create new Publication</h1>
+    {{ include('publication/_form.html.twig') }}
+    <a href="{{ path('app_publication_index') }}"> back to list </a>
+       </div>
+{% endblock %}

@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -10,7 +11,6 @@ use Symfony\Component\Validator\Constraints as Assert;
  * User
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @ORM\Table(name="user")
- * @ORM\Entity
  */
 class User implements UserInterface
 {
@@ -25,7 +25,6 @@ class User implements UserInterface
 
     /**
      * @var string
-     *
      * @ORM\Column(name="name", type="string", length=255, nullable=false)
      * @Assert\NotBlank(message="ce champ ne peut pas être vide")
      */
@@ -95,6 +94,14 @@ class User implements UserInterface
      * @ORM\Column(name="acces", type="string", length=255, nullable=false)
      */
     private $acces;
+
+    /**
+     * @param int $id
+     */
+    public function __construct(int $id)
+    {
+        $this->id = $id;
+    }
 
     /**
      * @return int

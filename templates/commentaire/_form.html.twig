@@ -1,0 +1,32 @@
+
+
+{{form_start(form,{'attr':{'novalidate':'novalidate'}})}}
+
+<table>
+    <tr>
+        <td>{{ form_label(form.libelleCommentaire) }} </td>
+        <td>{{ form_widget(form.libelleCommentaire) }}</td>
+    </tr>
+    <tr>
+        <td> {{ form_errors(form.libelleCommentaire) }}</td>
+    </tr>
+
+
+    <tr>
+        <td>{{ form_label(form.idUser) }} </td>
+        <td>{{ form_widget(form.idUser) }}</td>
+    </tr>
+
+
+    <tr>
+        <td>{{ form_label(form.idPublication) }} </td>
+        <td>{{ form_widget(form.idPublication) }}</td>
+    </tr>
+
+
+
+
+</table>
+<button class="btn btn-primary btn-xs" style="margin-left: 250px;width:120px"><i class="fa fa-pencil"></i>{{ button_label|default('Save') }}</button>
+
+{{ form_end(form) }}

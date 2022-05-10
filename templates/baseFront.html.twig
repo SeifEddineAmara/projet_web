@@ -25,7 +25,7 @@
     {% block stylesheets %}{% endblock %}
 </head>
 <body>
-
+{%block header %}
 <header role="banner">
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <div class="container">
@@ -51,7 +51,7 @@
                             <a class="nav-link" href="#">Restaurant</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Forum</a>
+                            <a class="nav-link" href="/userO">Forum</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ path('app_logout') }}">logout</a>
@@ -87,6 +87,7 @@
         </div>
     </nav>
 </header>
+{% endblock %}
 <!-- END header -->
 {% block body %}
     <section class="home-slider owl-carousel">

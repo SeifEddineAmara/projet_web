@@ -3,6 +3,9 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Groups;
+use App\Entity\User;
 
 /**
  * Publication
@@ -17,27 +20,33 @@ class Publication
      *
      * @ORM\Column(name="Id_Publication", type="integer", nullable=false)
      * @ORM\Id
+     * @Groups("publication1:read")
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $idPublication;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank
+     * @Groups("publication1:read")
      * @ORM\Column(name="Libelle_Publication", type="string", length=255, nullable=false)
+     *
      */
     private $libellePublication;
 
     /**
      * @var int
+     * @Assert\NotBlank
+     * @Groups("publication1:read")
+     * @ORM\Column(name="Nb_Reaction", type="integer", nullable=false)
      *
-     * @ORM\Column(name="Nb_RÃ©action", type="integer", nullable=false)
      */
-    private $nbRã©action;
+    private $nbReaction;
 
     /**
-     * @var \User
-     *
+     * @var User
+     * @Assert\NotBlank
+     * @Groups("publication1:read")
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="Id_User", referencedColumnName="id")
@@ -62,14 +71,14 @@ class Publication
         return $this;
     }
 
-    public function getNbRã©action(): ?int
+    public function getNbReaction(): ?int
     {
-        return $this->nbRã©action;
+        return $this->nbReaction;
     }
 
-    public function setNbRã©action(int $nbRã©action): self
+    public function setNbReaction(int $nbReaction): self
     {
-        $this->nbRã©action = $nbRã©action;
+        $this->nbReaction = $nbReaction;
 
         return $this;
     }
@@ -85,6 +94,12 @@ class Publication
 
         return $this;
     }
+
+    public function __toString()
+    {
+        return (string)$this->getIdPublication();
+    }
+
 
 
 }

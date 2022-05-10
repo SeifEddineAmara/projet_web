@@ -1,0 +1,23 @@
+{{form_start(form,{'attr':{'novalidate':'novalidate'}})}}
+
+<div>
+
+</div>
+<style>
+
+</style>
+<table  >
+    <tr>
+
+
+        <td class="form-control " id="pubText" style="background-color: transparent">{{  form_widget(form.libellePublication) }}</td>
+        </div>
+    </tr>
+    <tr>
+        <td> <h1 style="color: black"> {{ form_errors(form.libellePublication) }} </h1></td>
+    </tr>
+
+
+</table>
+<button class="nk-btn nk-btn-rounded" style="margin-left: 250px;width:120px;color: black;margin-left: 20px"><i class="fa fa-arrow-right"></i>{{ button_label|default('Save')  }}</button>
+{{ form_end(form) }}
