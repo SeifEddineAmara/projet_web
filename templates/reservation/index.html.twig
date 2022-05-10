@@ -1,0 +1,65 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}Reservation index{% endblock %}
+
+{% block body %}
+    <h1>Reservation index</h1>
+
+
+    <input type="text" id="search" class="form-control" placeholder="Search">
+
+
+
+
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Num Reservation</th>
+                <th>User</th>
+                <th>Restaurant</th>
+                <th>Nombre de personne</th>
+                <th>Heure</th>
+                <th>Date</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody id="all">
+        {% include 'reservation/reservationajax.html.twig' %}
+        </tbody>
+        <tbody align="left" border="2" id="search">
+        </tbody>
+    </table>
+    <div>
+        {{ knp_pagination_render(reservations) }}
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $( document ).ready(function() {
+            var currentRequest = null;
+            $("#search").keyup(function(e){
+                var value = $(this).val();
+                if(currentRequest != null) {
+                    currentRequest.abort();
+                }
+                currentRequest = $.ajax({
+                    url : "{{ path('searchreservation') }}",
+                    type : 'GET',
+                    data: {
+                        'searchValue' : value
+                    },
+                    success : function(retour)
+                    {
+                        $('#all').html(retour);
+                    },
+                });
+                return false;
+            });
+        });
+    </script>
+    </script>
+    <a href="{{ path('app_reservation_new') }}"><button type="button" class="btn btn-info">Create new</button></a>
+    <a href="{{ path('app_reservation_listr') }}"><button type="button" class="btn btn-info">Imprimer</button></a>
+{% endblock %}

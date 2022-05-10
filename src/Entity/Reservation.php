@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Reservation
@@ -23,21 +24,21 @@ class Reservation
 
     /**
      * @var int
-     *
+     * @Assert\NotBlank
      * @ORM\Column(name="Heure", type="integer", nullable=false)
      */
     private $heure;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank
      * @ORM\Column(name="Date", type="string", length=225, nullable=false)
      */
     private $date;
 
     /**
      * @var \Restaurant
-     *
+     * @Assert\NotBlank
      * @ORM\ManyToOne(targetEntity="Restaurant")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="Id_Restaurant", referencedColumnName="id")
@@ -46,8 +47,18 @@ class Reservation
     private $idRestaurant;
 
     /**
+     * @var \TableRestaurant
+     * @Assert\NotBlank
+     * @ORM\ManyToOne(targetEntity="TableRestaurant")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Id_Table", referencedColumnName="Id_Table")
+     * })
+     */
+    private $idTable;
+
+    /**
      * @var \User
-     *
+     * @Assert\NotBlank
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="Id_User", referencedColumnName="id")
@@ -55,15 +66,8 @@ class Reservation
      */
     private $idUser;
 
-    /**
-     * @var \TableRestaurant
-     *
-     * @ORM\ManyToOne(targetEntity="TableRestaurant")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="Id_Table", referencedColumnName="Id_Table")
-     * })
-     */
-    private $idTable;
+
+
 
     public function getIdReservation(): ?int
     {
@@ -106,18 +110,6 @@ class Reservation
         return $this;
     }
 
-    public function getIdUser(): ?User
-    {
-        return $this->idUser;
-    }
-
-    public function setIdUser(?User $idUser): self
-    {
-        $this->idUser = $idUser;
-
-        return $this;
-    }
-
     public function getIdTable(): ?TableRestaurant
     {
         return $this->idTable;
@@ -126,6 +118,18 @@ class Reservation
     public function setIdTable(?TableRestaurant $idTable): self
     {
         $this->idTable = $idTable;
+
+        return $this;
+    }
+
+    public function getIdUser(): ?User
+    {
+        return $this->idUser;
+    }
+
+    public function setIdUser(?User $idUser): self
+    {
+        $this->idUser = $idUser;
 
         return $this;
     }

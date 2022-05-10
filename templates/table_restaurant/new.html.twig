@@ -1,0 +1,11 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}Table Restaurant index{% endblock %}
+
+{% block body %}
+    <h1>Create new TableRestaurant</h1>
+
+    {{ include('table_restaurant/_form.html.twig') }}
+
+    <a href="{{ path('app_table_restaurant_index') }}">back to list</a>
+{% endblock %}

@@ -1,0 +1,39 @@
+<h1 style="text-align: center">Liste des users</h1>
+<style>
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+</style>
+<table class="table">
+<thead>
+<tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Lastname</th>
+    <th>Email</th>
+    <th>Gender</th>
+    <th>Role</th>
+    <th>Phone</th>
+    <th>Birthday</th>
+</tr>
+</thead>
+    <tbody>
+    {% for user in users %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.lastname }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.gender }}</td>
+            <td>{{ user.roles[0] }}</td>
+            <td>{{ user.phone }}</td>
+            <td>{{ user.birthday ? user.birthday|date('Y-m-d') : '' }}</td>
+        </tr>
+    {% else %}
+        <tr>
+            <td colspan="11">no records found</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

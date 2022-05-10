@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * TableRestaurant
@@ -23,14 +24,14 @@ class TableRestaurant
 
     /**
      * @var int
-     *
+     * @Assert\NotBlank
      * @ORM\Column(name="Type_Table", type="integer", nullable=false)
      */
     private $typeTable;
 
     /**
      * @var \Restaurant
-     *
+     * @Assert\NotBlank
      * @ORM\ManyToOne(targetEntity="Restaurant")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="Id_Restaurant", referencedColumnName="id")
@@ -40,7 +41,7 @@ class TableRestaurant
 
     public function getIdTable(): ?int
     {
-        return $this->idTable;
+        return $this->idTable.$this->typeTable;
     }
 
     public function getTypeTable(): ?int
@@ -65,6 +66,10 @@ class TableRestaurant
         $this->idRestaurant = $idRestaurant;
 
         return $this;
+    }
+
+    public function __toString() :string {
+        return $this->getTypeTable();
     }
 
 

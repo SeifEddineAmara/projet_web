@@ -8,6 +8,8 @@ use App\Form\TypeDeMusiqueType;
 use App\Repository\TypeDeMusiqueRepository;
 use App\Search\TypeDeMusiqueSearchData;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\OptimisticLockException;
+use Doctrine\ORM\ORMException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -46,7 +48,10 @@ class TypeDeMusiqueController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $typeDeMusiqueRepository->add($typeDeMusique);
+            try {
+                $typeDeMusiqueRepository->add($typeDeMusique);
+            } catch (OptimisticLockException|ORMException $e) {
+            }
             return $this->redirectToRoute('app_type_de_musique_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -75,7 +80,10 @@ class TypeDeMusiqueController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $typeDeMusiqueRepository->add($typeDeMusique);
+            try {
+                $typeDeMusiqueRepository->add($typeDeMusique);
+            } catch (OptimisticLockException|ORMException $e) {
+            }
             return $this->redirectToRoute('app_type_de_musique_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -91,7 +99,10 @@ class TypeDeMusiqueController extends AbstractController
     public function delete(Request $request, TypeDeMusique $typeDeMusique, TypeDeMusiqueRepository $typeDeMusiqueRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$typeDeMusique->getId(), $request->request->get('_token'))) {
-            $typeDeMusiqueRepository->remove($typeDeMusique);
+            try {
+                $typeDeMusiqueRepository->remove($typeDeMusique);
+            } catch (OptimisticLockException|ORMException $e) {
+            }
         }
 
         return $this->redirectToRoute('app_type_de_musique_index', [], Response::HTTP_SEE_OTHER);

@@ -3,14 +3,16 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * User
- *
+ * @ORM\Entity(repositoryClass=UserRepository::class)
  * @ORM\Table(name="user")
  * @ORM\Entity
  */
-class User
+class User implements UserInterface
 {
     /**
      * @var int
@@ -25,6 +27,7 @@ class User
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255, nullable=false)
+     * @Assert\NotBlank(message="ce champ ne peut pas être vide")
      */
     private $name;
 
@@ -32,6 +35,7 @@ class User
      * @var string
      *
      * @ORM\Column(name="lastname", type="string", length=255, nullable=false)
+     * @Assert\NotBlank(message="ce champ ne peut pas être vide")
      */
     private $lastname;
 
@@ -39,6 +43,10 @@ class User
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255, nullable=false)
+     * @Assert\Email(
+     *     message = "The email '{{ value }}' is not a valid email."
+     * )
+     * @Assert\NotBlank(message="ce champ ne peut pas être vide")
      */
     private $email;
 
@@ -46,6 +54,7 @@ class User
      * @var string
      *
      * @ORM\Column(name="password", type="string", length=255, nullable=false)
+     * @Assert\NotBlank(message="ce champ ne peut pas être vide")
      */
     private $password;
 
@@ -57,16 +66,18 @@ class User
     private $gender;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="role", type="string", length=255, nullable=false)
+     * @ORM\Column(type="json")
      */
-    private $role;
+    private $roles = [];
+
+
 
     /**
      * @var int
      *
      * @ORM\Column(name="phone", type="integer", nullable=false)
+     * @Assert\NotBlank(message="ce champ ne peut pas être vide")
+     * @Assert\Length(min="8", minMessage="Le telephone doit faire minimum 8 caractères")
      */
     private $phone;
 
@@ -74,6 +85,7 @@ class User
      * @var \DateTime
      *
      * @ORM\Column(name="birthday", type="date", nullable=false)
+     *
      */
     private $birthday;
 
@@ -84,118 +96,203 @@ class User
      */
     private $acces;
 
-    public function getId(): ?int
+    /**
+     * @return int
+     */
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function getName(): ?string
+    /**
+     * @param int $id
+     */
+    public function setId(int $id): void
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
     {
         return $this->name;
     }
 
-    public function setName(string $name): self
+    /**
+     * @param string $name
+     */
+    public function setName(string $name): void
     {
         $this->name = $name;
-
-        return $this;
     }
 
-    public function getLastname(): ?string
+    /**
+     * @return string
+     */
+    public function getLastname()
     {
         return $this->lastname;
     }
 
-    public function setLastname(string $lastname): self
+    /**
+     * @param string $lastname
+     */
+    public function setLastname(string $lastname): void
     {
         $this->lastname = $lastname;
-
-        return $this;
     }
 
-    public function getEmail(): ?string
+    /**
+     * @return string
+     */
+    public function getEmail()
     {
         return $this->email;
     }
 
-    public function setEmail(string $email): self
+    /**
+     * @param string $email
+     */
+    public function setEmail(string $email): void
     {
         $this->email = $email;
-
-        return $this;
     }
 
-    public function getPassword(): ?string
+    /**
+     * @return string
+     */
+    public function getPassword()
     {
         return $this->password;
     }
 
-    public function setPassword(string $password): self
+    /**
+     * @param string $password
+     */
+    public function setPassword(string $password): void
     {
         $this->password = $password;
-
-        return $this;
     }
 
-    public function getGender(): ?string
+    /**
+     * @return string
+     */
+    public function getGender()
     {
         return $this->gender;
     }
 
-    public function setGender(string $gender): self
+    /**
+     * @param string $gender
+     */
+    public function setGender(string $gender): void
     {
         $this->gender = $gender;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
+    {
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
 
         return $this;
     }
-
-    public function getRole(): ?string
-    {
-        return $this->role;
-    }
-
-    public function setRole(string $role): self
-    {
-        $this->role = $role;
-
-        return $this;
-    }
-
-    public function getPhone(): ?int
+    /**
+     * @return int
+     */
+    public function getPhone()
     {
         return $this->phone;
     }
 
-    public function setPhone(int $phone): self
+    /**
+     * @param int $phone
+     */
+    public function setPhone(int $phone): void
     {
         $this->phone = $phone;
-
-        return $this;
     }
 
-    public function getBirthday(): ?\DateTimeInterface
+    /**
+     * @return \DateTime
+     */
+    public function getBirthday()
     {
         return $this->birthday;
     }
 
-    public function setBirthday(\DateTimeInterface $birthday): self
+    /**
+     * @param \DateTime $birthday
+     */
+    public function setBirthday(\DateTime $birthday): void
     {
         $this->birthday = $birthday;
-
-        return $this;
     }
 
-    public function getAcces(): ?string
+    /**
+     * @return string
+     */
+    public function getAcces()
     {
         return $this->acces;
     }
 
-    public function setAcces(string $acces): self
+    /**
+     * @param string $acces
+     */
+    public function setAcces(string $acces): void
     {
         $this->acces = $acces;
-
-        return $this;
     }
 
+
+    /**
+     * A visual identifier that represents this user.
+     *
+     * @see UserInterface
+     */
+    public function getUsername(): string
+    {
+        return (string) $this->email;
+    }
+
+    /**
+     * Returning a salt is only needed, if you are not using a modern
+     * hashing algorithm (e.g. bcrypt or sodium) in your security.yaml.
+     *
+     * @see UserInterface
+     */
+    public function getSalt(): ?string
+    {
+        return null;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function eraseCredentials()
+    {
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
+    }
+
+
+    public function __toString(): string
+    {
+        return $this->email;
+    }
 
 }

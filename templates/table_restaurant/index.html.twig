@@ -1,0 +1,58 @@
+{% extends 'baseBack.html.twig' %}
+
+
+
+
+{% block title %}Table Restaurant index{% endblock %}
+
+{% block body %}
+    <h1>TableRestaurant index</h1>
+
+    {% block stylesheets %}
+        <input type="text" id="search" class="form-control" placeholder="Search">
+
+
+        <script src="{{ asset('https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js') }}"></script>
+        <script>
+            $(document).ready(function(){
+                $("#search").on("keyup", function() {
+                    var value = $(this).val().toLowerCase();
+                    $("#Ytable tr").filter(function() {
+                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                    });
+                });
+            });
+        </script>
+
+        <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    {% endblock %}
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Restaurant</th>
+                <th>Nombre de personne</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for table_restaurant in table_restaurants %}
+            <tr>
+                <td>{{ table_restaurant.idRestaurant.nom }}</td>
+                <td>{{ table_restaurant.typeTable }}</td>
+                <td>
+                    <a href="{{ path('app_table_restaurant_show', {'idTable': table_restaurant.idTable}) }}">show</a>
+                    <a href="{{ path('app_table_restaurant_edit', {'idTable': table_restaurant.idTable}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_table_restaurant_new') }}">Create new</a>
+{% endblock %}
