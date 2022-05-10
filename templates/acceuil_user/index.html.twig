@@ -1,0 +1,122 @@
+{% extends 'baseFront.html.twig' %}
+
+{% block title %}Hello AcceuilUserController!{% endblock %}
+
+{#{% block header %}#}
+{#  <header role="banner">#}
+{#    <nav class="navbar navbar-expand-md navbar-dark bg-dark">#}
+{#      <div class="container">#}
+{#        <a class="navbar-brand" href="{{ asset('acceuil_user/index.html.twig')}}">TAP <span style="color: greenyellow">&</span>GO</a>#}
+{#        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">#}
+{#          <span class="navbar-toggler-icon"></span>#}
+{#        </button>#}
+
+{#        <div class="collapse navbar-collapse" id="navbarsExample05">#}
+{#          <ul class="navbar-nav ml-auto pl-lg-5 pl-0">#}
+{#            <li class="nav-item">#}
+{#              <a class="nav-link active" href="{{ path('app_acceuil_user')}}">Home</a>#}
+{#            </li>#}
+{#            <li class="nav-item">#}
+{#              <a class="nav-link" href="{{ asset('index.html')}}">Autre Plats</a>#}
+{#            </li>#}
+{#            <li class="nav-item dropdown">#}
+{#              <a class="nav-link dropdown-toggle" href="{{ asset('index.html')}}" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Services</a>#}
+{#              <div class="dropdown-menu" aria-labelledby="dropdown04">#}
+{#                <a class="dropdown-item" href="services.html">youssef 1 dynamique</a>#}
+{#                <a class="dropdown-item" href="services.html">à faire</a>#}
+{#                <a class="dropdown-item" href="services.html">last</a>#}
+{#              </div>#}
+{#            </li>#}
+
+{#          </ul>#}
+
+{#          <ul class="navbar-nav ml-auto">#}
+{#            <li class="nav-item cta-btn">#}
+{#              <a class="nav-link" href="contact.html" >Les Plats à faire</a>#}
+{#            </li>#}
+{#          </ul>#}
+
+{#        </div>#}
+{#      </div>#}
+{#    </nav>#}
+{#  </header>#}
+{#  <!-- END header -->#}
+{#{% endblock %}#}
+
+{% block body %}
+{#<style>#}
+{#    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }#}
+{#    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }#}
+{#</style>#}
+
+{#<div class="example-wrapper">#}
+{#  <a href="#"> here the body </a>#}
+{#</div>#}
+  <section class="home-slider owl-carousel">
+    <div class="slider-item" style="background-image: url('{{ asset('img/RestAcc.jpg')}}');background-color: #0b0b0b">
+
+      <div class="container">
+        <div class="row slider-text align-items-center justify-content-center">
+          <div class="col-md-8 text-center col-sm-12 element-animate">
+            <h1 >Bienvenue dans l'espace Restaurant</h1>
+            <p class="mb-5" ></p>
+            <p><a href="#restdiv" class="btn btn-white btn-outline-white">Tap Here To Go</a></p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+
+  </section>
+  <!-- END slider -->
+
+
+
+
+  <section class="section element-animate" >
+
+    <div class="clearfix mb-5 pb-5">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12 text-center heading-wrap">
+            <h2 id="restdiv">Les Restaurants</h2>
+            <span class="back-text">Partout</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="owl-carousel centernonloop">
+      <a href="{{ path('acceuil_menuByIdRestaurant',{'id_restaurant':65}) }}" class="item-dishes">
+        <div class="text">
+          <p class="dishes-price">Bardo</p>
+          <h4 class="dishes-heading">Baguette & Baguette</h4>
+        </div>
+        <img src="{{ asset('img/Baguette.jpg')}}" alt="" class="img-fluid">
+      </a>
+      <a href="{{ path('acceuil_menuByIdRestaurant',{'id_restaurant':69}) }}" class="item-dishes">
+        <div class="text">
+          <p class="dishes-price">Lac</p>
+          <h2 class="dishes-heading">Chillis</h2>
+        </div>
+        <img src="{{ asset('img/Chillis.jpg')}}" alt="" class="img-fluid">
+      </a>
+      <a href="{{ path('acceuil_menuByIdRestaurant',{'id_restaurant':74}) }}" class="item-dishes">
+        <div class="text">
+          <p class="dishes-price">KFC</p>
+          <h2 class="dishes-heading">Marsa</h2>
+        </div>
+        <img src="{{ asset('img/kfc.jpg')}}" alt="" class="img-fluid">
+      </a>
+      <a href="{{ path('acceuil_menuByIdRestaurant',{'id_restaurant':80}) }}" class="item-dishes">
+        <div class="text">
+          <p class="dishes-price">Queen</p>
+          <h2 class="dishes-heading">El Aouina</h2>
+        </div>
+        <img src="{{ asset('img/queen.jpg')}}" alt="" class="img-fluid">
+      </a>
+    </div>
+  </section> <!-- .section -->
+{% endblock %}

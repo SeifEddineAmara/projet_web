@@ -3,11 +3,12 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Restaurant
  *
- * @ORM\Table(name="restaurant")
+ * @ORM\Table(name="restaurant", indexes={@ORM\Index(name="fk_rest_user", columns={"owner"})})
  * @ORM\Entity
  */
 class Restaurant
@@ -23,138 +24,109 @@ class Restaurant
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank
      * @ORM\Column(name="nom", type="string", length=255, nullable=false)
      */
     private $nom;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank
      * @ORM\Column(name="adresse", type="string", length=255, nullable=false)
      */
     private $adresse;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank
      * @ORM\Column(name="domaine", type="string", length=255, nullable=false)
      */
     private $domaine;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="owner", type="string", length=225, nullable=false)
-     */
-    private $owner;
-
-    /**
      * @var int
-     *
+     * @Assert\NotBlank
      * @ORM\Column(name="nb", type="integer", nullable=false)
      */
     private $nb;
 
     /**
-     * @return int
+     * @var User
+     * @Assert\NotBlank
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="owner", referencedColumnName="id")
+     * })
      */
-    public function getId(): int
+    private $owner;
+
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * @param int $id
-     */
-    public function setId(int $id): void
-    {
-        $this->id = $id;
-    }
-
-    /**
-     * @return string
-     */
-    public function getNom(): string
+    public function getNom(): ?string
     {
         return $this->nom;
     }
 
-    /**
-     * @param string $nom
-     */
-    public function setNom(string $nom): void
+    public function setNom(string $nom): self
     {
         $this->nom = $nom;
+
+        return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getAdresse(): string
+    public function getAdresse(): ?string
     {
         return $this->adresse;
     }
 
-    /**
-     * @param string $adresse
-     */
-    public function setAdresse(string $adresse): void
+    public function setAdresse(string $adresse): self
     {
         $this->adresse = $adresse;
+
+        return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getDomaine(): string
+    public function getDomaine(): ?string
     {
         return $this->domaine;
     }
 
-    /**
-     * @param string $domaine
-     */
-    public function setDomaine(string $domaine): void
+    public function setDomaine(string $domaine): self
     {
         $this->domaine = $domaine;
+
+        return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getOwner(): string
-    {
-        return $this->owner;
-    }
-
-    /**
-     * @param string $owner
-     */
-    public function setOwner(string $owner): void
-    {
-        $this->owner = $owner;
-    }
-
-    /**
-     * @return int
-     */
-    public function getNb(): int
+    public function getNb(): ?int
     {
         return $this->nb;
     }
 
-    /**
-     * @param int $nb
-     */
-    public function setNb(int $nb): void
+    public function setNb(int $nb): self
     {
         $this->nb = $nb;
+
+        return $this;
+    }
+
+    public function getOwner(): ?User
+    {
+        return $this->owner;
+    }
+
+    public function setOwner(?User $owner): self
+    {
+        $this->owner = $owner;
+
+        return $this;
     }
 
     public function __toString()
     {
-        // TODO: Implement __toString() method.
         return $this->getNom();
     }
 

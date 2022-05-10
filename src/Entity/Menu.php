@@ -3,11 +3,12 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Menu
  *
- * @ORM\Table(name="menu")
+ * @ORM\Table(name="menu", indexes={@ORM\Index(name="fk_menu_rest", columns={"restaurant"})})
  * @ORM\Entity
  */
 class Menu
@@ -23,22 +24,25 @@ class Menu
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank
      * @ORM\Column(name="nom", type="string", length=255, nullable=false)
      */
     private $nom;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank
      * @ORM\Column(name="type", type="string", length=255, nullable=false)
      */
     private $type;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="restaurant", type="string", length=255, nullable=false)
+     * @var Restaurant
+     * @Assert\NotBlank
+     * @ORM\ManyToOne(targetEntity="Restaurant")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="restaurant", referencedColumnName="id")
+     * })
      */
     private $restaurant;
 
@@ -71,16 +75,21 @@ class Menu
         return $this;
     }
 
-    public function getRestaurant(): ?string
+    public function getRestaurant(): ?Restaurant
     {
         return $this->restaurant;
     }
 
-    public function setRestaurant(string $restaurant): self
+    public function setRestaurant(?Restaurant $restaurant): self
     {
         $this->restaurant = $restaurant;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->getNom();
     }
 
 

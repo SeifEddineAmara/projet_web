@@ -1,0 +1,54 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}Restaurant index{% endblock %}
+
+{% block body %}
+    <br>
+    <br>
+    <br>
+    <h1 style="margin-left: 250px">Restaurant</h1>
+
+    <table class="table" style="margin-left: 250px;width:1000px">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Adresse</th>
+                <th>Domaine</th>
+                <th>Nb</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for restaurant in restaurants %}
+            <tr>
+                <td>{{ restaurant.id }}</td>
+                <td>{{ restaurant.nom }}</td>
+                <td>{{ restaurant.adresse }}</td>
+                <td>{{ restaurant.domaine }}</td>
+                <td>{{ restaurant.nb }}</td>
+                <td>
+                    <a href="{{ path('app_restaurant_show', {'id': restaurant.id}) }}">show</a>
+                    <a href="{{ path('app_restaurant_edit', {'id': restaurant.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+    <div>
+
+    </div>
+    <div style="margin-left: 500px">
+        {{ knp_pagination_render(restaurants) }}
+        <br>
+    <a href="{{ path('app_restaurant_new') }}">Create new</a>
+    <a href="{{ path('app_reservation_listr') }}"><button type="button" class="btn btn-info">Imprimer</button></a>
+    </div>
+
+        {% endblock %}

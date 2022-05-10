@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Menu</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/animate.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css')}}">
+
+    <link rel="stylesheet" href="{{ asset('css/magnific-popup.css')}}">
+
+
+    <link rel="stylesheet" href="{{ asset('fonts/ionicons/css/ionicons.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('fonts/fontawesome/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('fonts/flaticons/font/flaticon.css')}}">
+
+    <!-- Theme Style -->
+    <link rel="stylesheet" href="{{ asset('css/styleFront.css')}}">
+</head>
+<body>
+<header role="banner" style="background-color: #0b0b0b">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="{{ asset('index.html')}}">TAP <span style="color: greenyellow">&</span>GO</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarsExample05">
+                <ul class="navbar-nav ml-auto pl-lg-5 pl-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{{ path('app_acceuil_user')}}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ asset('index.html')}}">Autre Plats</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="{{ asset('index.html')}}" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Services</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown04">
+                            <a class="dropdown-item" href="services.html">youssef 1 dynamique</a>
+                            <a class="dropdown-item" href="services.html">à faire</a>
+                            <a class="dropdown-item" href="services.html">last</a>
+                        </div>
+                    </li>
+
+                </ul>
+
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item cta-btn">
+                        <a class="nav-link" href="contact.html" >Les Plats à faire</a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+</header>
+<!-- END header -->
+{% block body %}
+
+
+<section class="section bg-light element-animate">
+
+    <div class="clearfix mb-5 pb-5">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 text-center heading-wrap">
+                    <h2>Our Menu</h2>
+                    <span class="back-text-dark">Menu</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+
+        <div class="row no-gutters">
+            {%  for menu in menus %}
+            <div class="col-md-6">
+                <div class="sched d-block d-lg-flex">
+                    <div class="bg-image order-2" style="background-image: url('{{ asset('img/dishes_5.jpg')}}');"></div>
+                    <div class="text order-1">
+                        <h3> {{  menu.getNom() }} </h3>
+                        <p>Tunisien</p>
+                        <p class="text-primary h3">{{  menu.getType() }}</p>
+                    </div>
+
+                </div>
+
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+</section>
+    <script src="{{ asset('js/jquery-3.2.1.min.js')}}"></script>
+    <script src="{{ asset('js/popper.min.js')}}"></script>
+    <script src="{{ asset('js/bootstrap.min.js')}}"></script>
+    <script src="{{ asset('js/owl.carousel.min.js')}}"></script>
+    <script src="{{ asset('js/jquery.waypoints.min.js')}}"></script>
+
+    <script src="{{ asset('js/jquery.magnific-popup.min.js')}}"></script>
+    <script src="{{ asset('js/magnific-popup-options.js')}}"></script>
+
+
+    <script src="{{ asset('js/main.js')}}"></script>
+
+{% endblock %}
+
