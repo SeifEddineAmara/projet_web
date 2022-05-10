@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Reaction{% endblock %}
+
+{% block body %}
+    <h1>Edit Reaction</h1>
+
+    <table>
+        <tr>
+            <td>{{ include('publication/_form.html.twig', {'button_label': 'Update'}) }}</td>
+        </tr>
+        <tr>
+            <td> <a href="{{ path('app_publication_index') }}"><button class="btn btn-danger btn-xs" style="margin-left: 250px;width:120px">Retour</button></a> </td>
+        </tr>
+    </table>
+{% endblock %}

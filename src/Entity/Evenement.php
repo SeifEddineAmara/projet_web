@@ -2,15 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\EvenementRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Evenement
  *
  * @ORM\Table(name="evenement", indexes={@ORM\Index(name="idArtiste", columns={"Id_Artiste"}), @ORM\Index(name="Id_Restaurant", columns={"Id_Restaurant"})})
- * @ORM\Entity(repositoryClass=EvenementRepository::class)
+ * @ORM\Entity
  */
 class Evenement
 {
@@ -25,7 +23,6 @@ class Evenement
 
     /**
      * @var string
-     * @Assert\NotBlank(message="Nom est obligatoire")
      *
      * @ORM\Column(name="Nom_Evenement", type="string", length=20, nullable=false)
      */
@@ -34,121 +31,81 @@ class Evenement
     /**
      * @var \DateTime|null
      *
-     * @Assert\NotBlank(message="Date est obligatoire")
-     *
-     *
      * @ORM\Column(name="Date_Evenement", type="date", nullable=true)
      */
     private $dateEvenement;
 
     /**
-     * @var Artiste
+     * @var \Artiste
      *
      * @ORM\ManyToOne(targetEntity="Artiste")
-     * @Assert\NotBlank(message="Artiste est obligatoire")
-     *
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="Id_Artiste", referencedColumnName="Id_Artiste")
      * })
      */
-    private $Artiste;
+    private $idArtiste;
 
     /**
-     * @var Restaurant
+     * @var \Restaurant
      *
      * @ORM\ManyToOne(targetEntity="Restaurant")
-     * @Assert\NotBlank(message="Restaurant est obligatoire")
-     *
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="Id_Restaurant", referencedColumnName="id")
      * })
      */
-    private $Restaurant;
+    private $idRestaurant;
 
-    /**
-     * @return int
-     */
-    public function getIdEvenement(): int
+    public function getIdEvenement(): ?int
     {
         return $this->idEvenement;
     }
 
-    /**
-     * @param int $idEvenement
-     */
-    public function setIdEvenement(int $idEvenement): void
-    {
-        $this->idEvenement = $idEvenement;
-    }
-
-    /**
-     * @return string
-     */
     public function getNomEvenement(): ?string
     {
         return $this->nomEvenement;
     }
 
-    /**
-     * @param string $nomEvenement
-     */
-    public function setNomEvenement(?string $nomEvenement): void
+    public function setNomEvenement(string $nomEvenement): self
     {
         $this->nomEvenement = $nomEvenement;
+
+        return $this;
     }
 
-    /**
-     * @return \DateTime|null
-     */
-    public function getDateEvenement(): ?\DateTime
+    public function getDateEvenement(): ?\DateTimeInterface
     {
         return $this->dateEvenement;
     }
 
-    /**
-     * @param \DateTime|null $dateEvenement
-     */
-    public function setDateEvenement(?\DateTime $dateEvenement): void
+    public function setDateEvenement(?\DateTimeInterface $dateEvenement): self
     {
         $this->dateEvenement = $dateEvenement;
+
+        return $this;
     }
 
-    /**
-     * @return Artiste
-     */
-    public function getArtiste(): ?Artiste
+    public function getIdArtiste(): ?Artiste
     {
-        return $this->Artiste;
+        return $this->idArtiste;
     }
 
-    /**
-     * @param Artiste $Artiste
-     */
-    public function setArtiste(?Artiste $Artiste): void
+    public function setIdArtiste(?Artiste $idArtiste): self
     {
-        $this->Artiste = $Artiste;
+        $this->idArtiste = $idArtiste;
+
+        return $this;
     }
 
-    /**
-     * @return Restaurant
-     */
-    public function getRestaurant(): ?Restaurant
+    public function getIdRestaurant(): ?Restaurant
     {
-        return $this->Restaurant;
+        return $this->idRestaurant;
     }
 
-    /**
-     * @param Restaurant $Restaurant
-     */
-    public function setRestaurant(?Restaurant $Restaurant): void
+    public function setIdRestaurant(?Restaurant $idRestaurant): self
     {
-        $this->Restaurant = $Restaurant;
-    }
+        $this->idRestaurant = $idRestaurant;
 
-    public function __toString()
-    {
-        // TODO: Implement __toString() method.
-        return $this->nomEvenement;
+        return $this;
     }
 
 

@@ -1,0 +1,46 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}Publication{% endblock %}
+
+{% block body %}
+<br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <table class="table" style="margin-left: 250px">
+        <tbody>
+            <tr>
+                <th>IdPublication</th>
+                <td>{{ publication.idPublication }}</td>
+            </tr>
+            <tr>
+                <th>LibellePublication</th>
+                <td>{{ publication.libellePublication }}</td>
+            </tr>
+            <tr>
+                <th>NbReaction</th>
+                <td>{{ publication.nbReaction }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <br>
+    <br>
+<table>
+    <tr>
+
+        <td><a href="{{ path('app_publication_index') }}" ><button class="btn btn-danger btn-xs" style="margin-left: 500px;width:120px">Retour</button></a></td>
+    </tr>
+    <tr> <td>{{ include('publication/_delete_form.html.twig') }}</td></tr>
+</table>
+<br>
+
+
+
+
+
+{% endblock %}

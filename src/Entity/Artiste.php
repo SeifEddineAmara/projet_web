@@ -2,15 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\ArtisteRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Artiste
  *
  * @ORM\Table(name="artiste")
- * @ORM\Entity(repositoryClass=ArtisteRepository::class)
+ * @ORM\Entity
  */
 class Artiste
 {
@@ -25,75 +23,45 @@ class Artiste
 
     /**
      * @var string|null
-     * @Assert\NotBlank(message="Nom est obligatoire")
      *
      * @ORM\Column(name="Nom_Artiste", type="string", length=30, nullable=true)
      */
     private $nomArtiste;
 
     /**
-     * @var TypeDeMusique
-     * @Assert\NotBlank(message="Genre de musique est obligatoire")
+     * @var string|null
      *
-     * @ORM\ManyToOne(targetEntity="TypeDeMusique")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="Type_De_Musique", referencedColumnName="id")
-     * })
+     * @ORM\Column(name="Type_De_Musique", type="string", length=20, nullable=true)
      */
     private $typeDeMusique;
 
-    /**
-     * @return int
-     */
-    public function getIdArtiste(): int
+    public function getIdArtiste(): ?int
     {
         return $this->idArtiste;
     }
 
-    /**
-     * @param int $idArtiste
-     */
-    public function setIdArtiste(int $idArtiste): void
-    {
-        $this->idArtiste = $idArtiste;
-    }
-
-    /**
-     * @return string|null
-     */
     public function getNomArtiste(): ?string
     {
         return $this->nomArtiste;
     }
 
-    /**
-     * @param string|null $nomArtiste
-     */
-    public function setNomArtiste(?string $nomArtiste): void
+    public function setNomArtiste(?string $nomArtiste): self
     {
         $this->nomArtiste = $nomArtiste;
+
+        return $this;
     }
 
-    /**
-     * @return TypeDeMusique
-     */
-    public function getTypeDeMusique(): ?TypeDeMusique
+    public function getTypeDeMusique(): ?string
     {
         return $this->typeDeMusique;
     }
 
-    /**
-     * @param TypeDeMusique $typeDeMusique
-     */
-    public function setTypeDeMusique(?TypeDeMusique $typeDeMusique): void
+    public function setTypeDeMusique(?string $typeDeMusique): self
     {
         $this->typeDeMusique = $typeDeMusique;
-    }
 
-    public function __toString()
-    {
-        // TODO: Implement __toString() method.
-        return $this->nomArtiste;
+        return $this;
     }
 
 

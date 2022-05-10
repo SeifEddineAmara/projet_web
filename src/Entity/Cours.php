@@ -3,7 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * Cours
  *
@@ -23,17 +23,16 @@ class Cours
 
     /**
      * @var string
-     * @Assert\NotBlank(message="nom cour doit étre saisie")
+     *
      * @ORM\Column(name="Nom_Cour", type="string", length=30, nullable=false)
      */
     private $nomCour;
 
     /**
      * @var string
-     * @Assert\NotBlank(message="le libelle du cour doit étre saisie")
+     *
      * @ORM\Column(name="Libelle_Cour", type="text", length=65535, nullable=false)
      */
-
     private $libelleCour;
 
     /**

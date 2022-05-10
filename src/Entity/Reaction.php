@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Reaction
@@ -23,14 +24,14 @@ class Reaction
 
     /**
      * @var int
-     *
+     * @Assert\NotBlank
      * @ORM\Column(name="Type_Reaction", type="integer", nullable=false)
      */
     private $typeReaction;
 
     /**
      * @var \Publication
-     *
+     * @Assert\NotBlank
      * @ORM\ManyToOne(targetEntity="Publication")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="Id_Publication", referencedColumnName="Id_Publication")
@@ -40,7 +41,7 @@ class Reaction
 
     /**
      * @var \User
-     *
+     * @Assert\NotBlank
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="Id_User", referencedColumnName="id")

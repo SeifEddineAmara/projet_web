@@ -3,12 +3,11 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Reservation
  *
- * @ORM\Table(name="reservation", indexes={@ORM\Index(name="Id_Table", columns={"Id_Table"}), @ORM\Index(name="Id_Resaturent", columns={"Id_Restaurant"}), @ORM\Index(name="Id_User", columns={"Id_User"})})
+ * @ORM\Table(name="reservation", indexes={@ORM\Index(name="Id_Resaturent", columns={"Id_Restaurant"}), @ORM\Index(name="Id_Table", columns={"Id_Table"}), @ORM\Index(name="Id_User", columns={"Id_User"})})
  * @ORM\Entity
  */
 class Reservation
@@ -24,21 +23,21 @@ class Reservation
 
     /**
      * @var int
-     * @Assert\NotBlank
+     *
      * @ORM\Column(name="Heure", type="integer", nullable=false)
      */
     private $heure;
 
     /**
      * @var string
-     * @Assert\NotBlank
+     *
      * @ORM\Column(name="Date", type="string", length=225, nullable=false)
      */
     private $date;
 
     /**
      * @var \Restaurant
-     * @Assert\NotBlank
+     *
      * @ORM\ManyToOne(targetEntity="Restaurant")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="Id_Restaurant", referencedColumnName="id")
@@ -48,7 +47,7 @@ class Reservation
 
     /**
      * @var \TableRestaurant
-     * @Assert\NotBlank
+     *
      * @ORM\ManyToOne(targetEntity="TableRestaurant")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="Id_Table", referencedColumnName="Id_Table")
@@ -58,16 +57,13 @@ class Reservation
 
     /**
      * @var \User
-     * @Assert\NotBlank
+     *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="Id_User", referencedColumnName="id")
      * })
      */
     private $idUser;
-
-
-
 
     public function getIdReservation(): ?int
     {

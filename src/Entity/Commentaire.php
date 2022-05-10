@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Commentaire
@@ -23,30 +24,30 @@ class Commentaire
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank
      * @ORM\Column(name="libelle_commentaire", type="string", length=255, nullable=false)
      */
     private $libelleCommentaire;
 
     /**
-     * @var \Publication
-     *
-     * @ORM\ManyToOne(targetEntity="Publication")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_publication", referencedColumnName="Id_Publication")
-     * })
-     */
-    private $idPublication;
-
-    /**
      * @var \User
-     *
+     * @Assert\NotBlank
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_user", referencedColumnName="id")
      * })
      */
     private $idUser;
+
+    /**
+     * @var \Publication
+     * @Assert\NotBlank
+     * @ORM\ManyToOne(targetEntity="Publication")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_publication", referencedColumnName="Id_Publication")
+     * })
+     */
+    private $idPublication;
 
     public function getIdCommentaire(): ?int
     {
@@ -65,6 +66,18 @@ class Commentaire
         return $this;
     }
 
+    public function getIdUser(): ?User
+    {
+        return $this->idUser;
+    }
+
+    public function setIdUser(?User $idUser): self
+    {
+        $this->idUser = $idUser;
+
+        return $this;
+    }
+
     public function getIdPublication(): ?Publication
     {
         return $this->idPublication;
@@ -77,17 +90,6 @@ class Commentaire
         return $this;
     }
 
-    public function getIdUser(): ?User
-    {
-        return $this->idUser;
-    }
-
-    public function setIdUser(?User $idUser): self
-    {
-        $this->idUser = $idUser;
-
-        return $this;
-    }
 
 
 }

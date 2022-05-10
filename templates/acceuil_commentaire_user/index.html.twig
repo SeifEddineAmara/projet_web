@@ -1,0 +1,226 @@
+<!doctype html>
+<head>
+    <title>Chika's Space Forum</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/animate.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css')}}">
+
+    <link rel="stylesheet" href="{{ asset('css/magnific-popup.css')}}">
+
+
+    <link rel="stylesheet" href="{{ asset('fonts/ionicons/css/ionicons.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('fonts/fontawesome/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('fonts/flaticons/font/flaticon.css')}}">
+
+    <!-- Theme Style -->
+    <link rel="stylesheet" href="{{ asset('css/style.css')}}">
+</head>
+<body>
+
+<header role="banner" style="background-color: #0b0b0b">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">TAP <span style="color: greenyellow">&</span>GO</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarsExample05">
+                <ul class="navbar-nav ml-auto pl-lg-5 pl-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{{ path('app_user_interface')}}">Acceuil</a>
+                    </li>
+                    <li class="nav-item">
+
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="{{ asset('index.html')}}" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Autres</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown04">
+                            <a class="dropdown-item" href="{{ path('app_user_interface')}}">Publications</a>
+
+                        </div>
+                    </li>
+
+                </ul>
+
+                <ul class="navbar-nav ml-auto">
+                    <p> Espace Forum : Commentaire </p>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!-- END header -->
+
+
+
+{% block body %}
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+    {{ include('acceuil_commentaire_user/new.html.twig') }}
+
+    {% if app.session.flashBag.has('info') %}
+        <div class="alert alert-success">
+            {% for msg in app.session.flashBag.get('info') %}
+                {{msg}}
+            {% endfor %}
+        </div>
+    {% endif %}
+    <div style="margin-right: 450px;margin-left: 450px;width: 900px">
+{% set i=0 %}
+        {% set j=4 %}
+        {% for commentaire in commentaires %}
+            {%  set  i=i+1 %}
+            {% set j=j+1 %}
+            <ul class="nk-forum nk-forum-topic">
+                <li>
+                    <div class="nk-forum-topic-author">
+                        <a href="#">
+                            <img src="{{ asset('/img/hero_1.jpg') }}" alt="Hitman">
+                        </a>
+                        <div class="nk-forum-topic-author-name" title="Hitman">
+                            <a href="#">Hitman</a>
+                        </div>
+                        <div class="nk-forum-topic-author-role">Keymaster</div>
+                        <div class="nk-forum-topic-author-since">
+                            Member since <br>{{ random(['Janvier', 'Février', 'Mars','Avril','Mai','Juin','Juiller','Aout','September','Octobre','Novembre','Decembre']) }} {{  random([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]) }}, {{  random([2018,2019,2020,2021,2022]) }}
+                        </div>
+                    </div>
+                    <div class="nk-forum-topic-content">
+
+
+
+                        <div class="nk-forum-topic-attachments">
+                            <h4 class="h5">&nbsp &ldquo;  {{ commentaire.LibelleCommentaire() }} &rdquo; </h4>
+
+                            <br>
+
+                        </div>
+                    </div>
+                    <div class="nk-forum-topic-footer">
+                        <span class="nk-forum-topic-date">{{ random(['Janvier', 'Février', 'Mars','Avril','Mai','Juin','Juiller','Aout','September','Octobre','Novembre','Decembre']) }} {{  random([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]) }}, 2022</span>
+
+
+                    </div>
+                </li>
+
+            </ul>
+
+
+
+
+
+        {% else %}
+
+                <p>no records found</p>
+
+        {% endfor %}
+
+
+
+    </div>
+
+
+
+
+
+
+
+    </div>
+
+{% endblock %}
+
+
+
+<!-- END slider -->
+<style>
+    #footer {
+        bottom:0;
+        width:100%;
+    }
+</style>
+
+<footer class="site-footer" role="contentinfo" id="footer">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-md-4 mb-5">
+                <h3>à propos</h3>
+                <p class="mb-5">Tap Go couvre toute la tunisie</p>
+                <ul class="list-unstyled footer-link d-flex footer-social">
+                    <li><a href="#" class="p-2"><span class="fa fa-twitter"></span></a></li>
+                    <li><a href="#" class="p-2"><span class="fa fa-facebook"></span></a></li>
+                    <li><a href="#" class="p-2"><span class="fa fa-linkedin"></span></a></li>
+                    <li><a href="#" class="p-2"><span class="fa fa-instagram"></span></a></li>
+                </ul>
+
+            </div>
+            <div class="col-md-5 mb-5">
+                <div class="mb-5">
+                    <h3>Horaires de travail</h3>
+                    <p><strong class="d-block">7/7</strong> </p>
+                </div>
+                <div>
+                    <h3>Contact Info</h3>
+                    <ul class="list-unstyled footer-link">
+                        <li class="d-block">
+                            <span class="d-block">Address:</span>
+                            <span class="text-white">77 city of angels, LA, United States</span></li>
+                        <li class="d-block"><span class="d-block">Telephone:</span><span class="text-white">+216 58 275 435</span></li>
+                        <li class="d-block"><span class="d-block">Email:</span><span class="text-white">salim.raboudi@esprit.tn</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-3 mb-5">
+                <h3>Quick Links</h3>
+                <ul class="list-unstyled footer-link">
+                    <li><a href="#">Reservation</a></li>
+                    <li><a href="#">Formation</a></li>
+                    <li><a href="#">Evenement </a></li>
+
+                </ul>
+            </div>
+            <div class="col-md-3">
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 text-md-center text-left">
+                <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://www.instagram.com/salim_raboudi/" target="_blank" >Chikaa</a>
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- END footer -->
+
+<!-- loader -->
+<div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#cf1d16"/></svg></div>
+
+<script src="{{ asset('js/jquery-3.2.1.min.js')}}"></script>
+<script src="{{ asset('js/popper.min.js')}}"> </script>
+<script src="{{ asset('js/bootstrap.min.js')}}"></script>
+<script src="{{ asset('js/owl.carousel.min.js')}}"></script>
+<script src="{{ asset('js/jquery.waypoints.min.js')}}"></script>
+
+<script src="{{ asset('js/jquery.magnific-popup.min.js')}}"></script>
+<script src="{{ asset('js/magnific-popup-options.js')}}"></script>
+
+
+<script src="{{ asset('js/main.js')}}"></script>
+</body>
+</html>
+
+

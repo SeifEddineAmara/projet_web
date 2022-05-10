@@ -56,106 +56,69 @@ class Restaurant
      */
     private $nb;
 
-    /**
-     * @return int
-     */
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * @param int $id
-     */
-    public function setId(int $id): void
-    {
-        $this->id = $id;
-    }
-
-    /**
-     * @return string
-     */
-    public function getNom(): string
+    public function getNom(): ?string
     {
         return $this->nom;
     }
 
-    /**
-     * @param string $nom
-     */
-    public function setNom(string $nom): void
+    public function setNom(string $nom): self
     {
         $this->nom = $nom;
+
+        return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getAdresse(): string
+    public function getAdresse(): ?string
     {
         return $this->adresse;
     }
 
-    /**
-     * @param string $adresse
-     */
-    public function setAdresse(string $adresse): void
+    public function setAdresse(string $adresse): self
     {
         $this->adresse = $adresse;
+
+        return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getDomaine(): string
+    public function getDomaine(): ?string
     {
         return $this->domaine;
     }
 
-    /**
-     * @param string $domaine
-     */
-    public function setDomaine(string $domaine): void
+    public function setDomaine(string $domaine): self
     {
         $this->domaine = $domaine;
+
+        return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getOwner(): string
+    public function getOwner(): ?string
     {
         return $this->owner;
     }
 
-    /**
-     * @param string $owner
-     */
-    public function setOwner(string $owner): void
+    public function setOwner(string $owner): self
     {
         $this->owner = $owner;
+
+        return $this;
     }
 
-    /**
-     * @return int
-     */
-    public function getNb(): int
+    public function getNb(): ?int
     {
         return $this->nb;
     }
 
-    /**
-     * @param int $nb
-     */
-    public function setNb(int $nb): void
+    public function setNb(int $nb): self
     {
         $this->nb = $nb;
-    }
 
-    public function __toString()
-    {
-        // TODO: Implement __toString() method.
-        return $this->getNom();
+        return $this;
     }
 
 

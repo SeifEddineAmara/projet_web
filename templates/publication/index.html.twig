@@ -1,0 +1,49 @@
+{% extends 'baseBack.html.twig' %}
+{% block title %}Publication index{% endblock %}
+
+{% block body %}
+
+   <br>
+    <br>
+    <br>
+
+    <table class="table table-striped table-advance table-hover" style="margin-left: 250px;width:1000px" >
+        <h4><i class="fa fa-angle-right"></i> Forums </h4>
+        <hr>
+        <thead>
+        <tr>
+            <th><i class="fa fa-bullhorn"></i> Id Publication </th>
+            <th><i class="fa fa-bullhorn"></i> Said </th>
+            <th><i class="fa fa-bookmark"></i> How many likes :) </th>
+            <th><i class="fa fa-bullhorn"></i> Publisher </th>
+            <th><i class=" fa fa-edit"></i> ...</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            {% for publication in publications %}
+        <a>
+            <td>{{ publication.idPublication }}</td>
+            <td>{{ publication.libellePublication }}</td>
+            <td>{{ publication.nbReaction }}</td>
+            <td>{{ publication.getIdUser() }} </td>
+            <td><a href="{{ path('app_commentaire_index') }}"><span class="label label-info label-mini">Commentaire</span></a></td>
+            <td>
+                <a href="{{ path('app_publication_show', {'idPublication': publication.idPublication}) }}"><button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button></a>
+                <a href="{{ path('app_publication_edit', {'idPublication': publication.idPublication}) }}"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
+                <a href="{{ path('app_publication_delete', {'idPublication': publication.idPublication}) }}"><button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button></a>
+            </td>
+
+        </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+    <a href="{{ path('app_publication_new') }}" ><button class="btn btn-success btn-xs" style="margin-left: 250px;">Publier</button></a>
+
+{% endblock %}
