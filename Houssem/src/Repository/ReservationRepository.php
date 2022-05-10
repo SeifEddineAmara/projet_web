@@ -39,8 +39,8 @@ class ReservationRepository extends ServiceEntityRepository
     public function findMale()
     {
         return $this->createQueryBuilder('Reservation')
-            ->where('Reservation.idUser.nom Like :idUser')
-            ->setParameter('idUser', '%seif%')
+            ->where('Reservation.idUser.name Like :idUser.name')
+            ->setParameter('idUser.name', '%seif%')
             ->getQuery()
             ->getResult()
             ;
@@ -48,8 +48,8 @@ class ReservationRepository extends ServiceEntityRepository
     public function findFemale()
     {
         return $this->createQueryBuilder('Reservation')
-            ->where('Reservation.idUser.nom Like :idUser')
-            ->setParameter('idUser', '%houssem%')
+            ->where('Reservation.idUser.name Like :idUser.name')
+            ->setParameter('idUser.name', '%houssem%')
             ->getQuery()
             ->getResult()
             ;
@@ -93,6 +93,16 @@ class ReservationRepository extends ServiceEntityRepository
 
         return $qb->getQuery()
             ->getResult();
+    }
+
+    public function findByHeure($produit)
+    {
+        return $this->createQueryBuilder('r')
+            ->where('r.heure Like :heure ')
+            ->setParameter('heure ', '%'.$produit.'%')
+            ->getQuery()
+            ->getResult()
+            ;
     }
 
 }

@@ -93,13 +93,22 @@ return $this->render('reservation/listr.html.twig', [
         /**
      * @Route("/new", name="app_reservation_new", methods={"GET", "POST"})
      */
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, \Swift_Mailer $mailer): Response
     {
         $reservation = new Reservation();
         $form = $this->createForm(ReservationType::class, $reservation);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $message= (new \Swift_Message('TAP&GO'))
+                ->setTo('youssef.riahi@esprit.tn')
+                ->setFrom('Houssem.setti@esprit.tn')
+                ->setBody(
+                    'Votre Reservation est confirmé! Merci pour nous faire confiance.'
+                )
+            ;
+            $mailer->send($message);
+
             $entityManager->persist($reservation);
             $entityManager->flush();
 
@@ -184,5 +193,19 @@ return $this->render('reservation/listr.html.twig', [
 
     }
 
+    /**
+     * @param Request $request
+     * @return Response
+     * @Route ("/userajax/aa",name="searchreservation")
+     */
+    public function searchReservation(Request $request,ReservationRepository $reservationRepository)
+    {
+        $reservationRepository = $this->getDoctrine()->getRepository(Reservation::class);
+        $requestString=$request->get('searchValue');
+        $rdv = $reservationRepository->findByHeure($requestString);
+        return $this->render('reservation/index.html.twig' ,[
+            "reservations"=>$rdv,
+        ]);
+    }
 
 }

@@ -66,6 +66,9 @@ class Reservation
      */
     private $idUser;
 
+
+
+
     public function getIdReservation(): ?int
     {
         return $this->idReservation;

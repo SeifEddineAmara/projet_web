@@ -69,7 +69,7 @@ class TableRestaurant
     }
 
     public function __toString() :string {
-        return $this->getIdRestaurant()->getNom();
+        return $this->getTypeTable();
     }
 
 
