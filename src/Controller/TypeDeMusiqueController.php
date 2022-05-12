@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\TypeDeMusique;
 use App\Form\SearchTypeDeMusiqueType;
 use App\Form\TypeDeMusiqueType;
+use App\Repository\EvenementRepository;
 use App\Repository\TypeDeMusiqueRepository;
 use App\Search\TypeDeMusiqueSearchData;
 use Doctrine\ORM\EntityManagerInterface;
@@ -14,6 +15,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * @Route("/type/de/musique")
@@ -59,6 +62,14 @@ class TypeDeMusiqueController extends AbstractController
             'type_de_musique' => $typeDeMusique,
             'form' => $form->createView(),
         ]);
+    }
+    /**
+     * @Route ("/liste", name="app_evenement_liste")
+     */
+    public function getEvenements(TypeDeMusiqueRepository $repository, SerializerInterface $serializer): Response{
+        $typeDeMusique = $repository->findAll();
+        $json = $serializer->serialize($typeDeMusique, 'json');
+        return new jsonResponse($json,'200',[], true);
     }
 
     /**

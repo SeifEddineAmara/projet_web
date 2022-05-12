@@ -12,12 +12,25 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * @Route("/evenement")
  */
 class EvenementController extends AbstractController
 {
+
+    /**
+     * @Route ("/liste", name="app_evenement_liste", methods={"GET"})
+     */
+    public function getEvenements(EvenementRepository $repository, SerializerInterface $serializer): Response{
+        $evenements = $repository->findAll();
+        $json = $serializer->serialize($evenements, 'json', ['groups'=>'evenement:read']);
+
+        return new jsonResponse($json,'200',[], true);
+    }
+
     /**
      * @Route("/", name="app_evenement_index", methods={"GET"})
      */

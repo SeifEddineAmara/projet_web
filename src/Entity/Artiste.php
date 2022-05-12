@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\ArtisteRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Artiste
@@ -20,6 +21,8 @@ class Artiste
      * @ORM\Column(name="Id_Artiste", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     *
+     * @Groups ("evenement:read")
      */
     private $idArtiste;
 
@@ -28,6 +31,8 @@ class Artiste
      * @Assert\NotBlank(message="Nom est obligatoire")
      *
      * @ORM\Column(name="Nom_Artiste", type="string", length=30, nullable=true)
+     *
+     * @Groups ("evenement:read")
      */
     private $nomArtiste;
 
@@ -39,6 +44,8 @@ class Artiste
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="Type_De_Musique", referencedColumnName="id")
      * })
+     *
+     * @Groups ("evenement:read")
      */
     private $typeDeMusique;
 

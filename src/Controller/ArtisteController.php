@@ -6,12 +6,15 @@ use App\Entity\Artiste;
 use App\Form\ArtisteType;
 use App\Form\SearchArtisteType;
 use App\Repository\ArtisteRepository;
+use App\Repository\EvenementRepository;
 use App\Search\ArtisteSearchData;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\SerializerInterface;
 
 /**
  * @Route("/artiste")
@@ -34,6 +37,15 @@ class ArtisteController extends AbstractController
             'form' => $form->createView(),
             'artistes' => $artistes,
         ]);
+    }
+
+    /**
+     * @Route ("/liste", name="app_artiste_liste", methods={"GET"})
+     */
+    public function getEvenements(ArtisteRepository $repository, SerializerInterface $serializer): Response{
+        $artistes = $repository->findAll();
+        $json = $serializer->serialize($artistes, 'json');
+        return new jsonResponse($json,'200',[], true);
     }
 
     /**

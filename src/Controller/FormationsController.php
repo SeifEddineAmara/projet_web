@@ -114,7 +114,7 @@ class FormationsController extends AbstractController
 
         $email = (new TemplatedEmail())
             ->from('3a5pidev@gmail.com')
-            ->to('zaiemchams10@gmail.com')
+            ->to('salim.raboudi@esprit.tn')
             ->subject("Cour envoyée avec succée")
             ->htmlTemplate('formations/EnvoyerMail.html.twig')
             ->context([

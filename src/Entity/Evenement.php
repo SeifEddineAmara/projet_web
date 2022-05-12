@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\EvenementRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Evenement
@@ -20,6 +21,8 @@ class Evenement
      * @ORM\Column(name="Id_Evenement", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     *
+     * @Groups ("evenement:read")
      */
     private $idEvenement;
 
@@ -28,6 +31,8 @@ class Evenement
      * @Assert\NotBlank(message="Nom est obligatoire")
      *
      * @ORM\Column(name="Nom_Evenement", type="string", length=20, nullable=false)
+     *
+     * @Groups ("evenement:read")
      */
     private $nomEvenement;
 
@@ -38,6 +43,8 @@ class Evenement
      *
      *
      * @ORM\Column(name="Date_Evenement", type="date", nullable=true)
+     *
+     * @Groups ("evenement:read")
      */
     private $dateEvenement;
 
@@ -50,6 +57,8 @@ class Evenement
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="Id_Artiste", referencedColumnName="Id_Artiste")
      * })
+     *
+     * @Groups ("evenement:read")
      */
     private $Artiste;
 
@@ -62,6 +71,8 @@ class Evenement
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="Id_Restaurant", referencedColumnName="id")
      * })
+     *
+     * @Groups ("evenement:read")
      */
     private $Restaurant;
 

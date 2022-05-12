@@ -6,6 +6,7 @@ use App\Repository\TypeDeMusiqueRepository;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @UniqueEntity("Genre", message="Ce genre existe.")
@@ -17,6 +18,9 @@ class TypeDeMusique
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     *
+     * @Groups ("evenement:read")
+     *
      */
     private $id;
 
@@ -25,6 +29,8 @@ class TypeDeMusique
      * @Assert\NotBlank (message="Le genre doit avoir un nom")
      *
      * @ORM\Column(type="string", unique=true, length=255)
+     *
+     * @Groups ("evenement:read")
      */
     private $Genre;
 
