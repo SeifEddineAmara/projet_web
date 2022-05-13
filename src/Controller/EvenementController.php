@@ -20,17 +20,6 @@ use Symfony\Component\HttpFoundation\JsonResponse;
  */
 class EvenementController extends AbstractController
 {
-
-    /**
-     * @Route ("/liste", name="app_evenement_liste", methods={"GET"})
-     */
-    public function getEvenements(EvenementRepository $repository, SerializerInterface $serializer): Response{
-        $evenements = $repository->findAll();
-        $json = $serializer->serialize($evenements, 'json', ['groups'=>'evenement:read']);
-
-        return new jsonResponse($json,'200',[], true);
-    }
-
     /**
      * @Route("/", name="app_evenement_index", methods={"GET"})
      */
@@ -47,6 +36,16 @@ class EvenementController extends AbstractController
             'form' => $form->createView(),
             'evenements' => $evenements,
         ]);
+    }
+
+    /**
+     * @Route ("/_liste", name="app_evenement_liste")
+     */
+    public function Evenements(EvenementRepository $repository, SerializerInterface $serializer){
+        $evenements = $repository->findAll();
+        $json = $serializer->serialize($evenements, 'json');
+
+        return new jsonResponse($json,'200',[], true);
     }
 
     /**
