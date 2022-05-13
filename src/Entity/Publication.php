@@ -5,22 +5,22 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Serializer\Annotation\Groups;
-use App\Entity\User;
+
 
 /**
  * Publication
  *
  * @ORM\Table(name="publication", indexes={@ORM\Index(name="Id_User", columns={"Id_User"})})
+ *
  * @ORM\Entity
  */
 class Publication
 {
     /**
      * @var int
-     *
+     * @Groups("post:read")
      * @ORM\Column(name="Id_Publication", type="integer", nullable=false)
      * @ORM\Id
-     * @Groups("publication1:read")
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $idPublication;
@@ -28,7 +28,7 @@ class Publication
     /**
      * @var string
      * @Assert\NotBlank
-     * @Groups("publication1:read")
+     * @Groups("post:read")
      * @ORM\Column(name="Libelle_Publication", type="string", length=255, nullable=false)
      *
      */
@@ -37,20 +37,22 @@ class Publication
     /**
      * @var int
      * @Assert\NotBlank
-     * @Groups("publication1:read")
+     * @Groups("post:read")
      * @ORM\Column(name="Nb_Reaction", type="integer", nullable=false)
      *
      */
     private $nbReaction;
 
     /**
-     * @var User
+     * @var \User
      * @Assert\NotBlank
-     * @Groups("publication1:read")
+     * @Groups("post:read")
+     *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="Id_User", referencedColumnName="id")
      * })
+     *
      */
     private $idUser;
 

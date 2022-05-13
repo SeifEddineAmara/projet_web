@@ -6,6 +6,7 @@ use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * User
@@ -20,6 +21,7 @@ class User implements UserInterface
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @Groups("post:read")
      */
     private $id;
 
@@ -27,6 +29,7 @@ class User implements UserInterface
      * @var string
      * @ORM\Column(name="name", type="string", length=255, nullable=false)
      * @Assert\NotBlank(message="ce champ ne peut pas être vide")
+     * @Groups("publication:read")
      */
     private $name;
 
@@ -35,6 +38,7 @@ class User implements UserInterface
      *
      * @ORM\Column(name="lastname", type="string", length=255, nullable=false)
      * @Assert\NotBlank(message="ce champ ne peut pas être vide")
+     * @Groups("post:read")
      */
     private $lastname;
 
@@ -45,6 +49,7 @@ class User implements UserInterface
      * @Assert\Email(
      *     message = "The email '{{ value }}' is not a valid email."
      * )
+     * ("post:read")
      * @Assert\NotBlank(message="ce champ ne peut pas être vide")
      */
     private $email;
@@ -54,6 +59,7 @@ class User implements UserInterface
      *
      * @ORM\Column(name="password", type="string", length=255, nullable=false)
      * @Assert\NotBlank(message="ce champ ne peut pas être vide")
+     * @Groups("post:read")
      */
     private $password;
 
@@ -61,11 +67,13 @@ class User implements UserInterface
      * @var string
      *
      * @ORM\Column(name="gender", type="string", length=255, nullable=false)
+     * @Groups("post:read")
      */
     private $gender;
 
     /**
      * @ORM\Column(type="json")
+     * @Groups("post:read")
      */
     private $roles = [];
 
@@ -77,6 +85,7 @@ class User implements UserInterface
      * @ORM\Column(name="phone", type="integer", nullable=false)
      * @Assert\NotBlank(message="ce champ ne peut pas être vide")
      * @Assert\Length(min="8", minMessage="Le telephone doit faire minimum 8 caractères")
+     * @Groups("publication:read")
      */
     private $phone;
 
@@ -84,13 +93,14 @@ class User implements UserInterface
      * @var \DateTime
      *
      * @ORM\Column(name="birthday", type="date", nullable=false)
+     * @Groups("post:read")
      *
      */
     private $birthday;
 
     /**
      * @var string
-     *
+     * @Groups("post:read")
      * @ORM\Column(name="acces", type="string", length=255, nullable=false)
      */
     private $acces;
@@ -102,6 +112,11 @@ class User implements UserInterface
     {
         $this->id = $id;
     }
+
+    /**
+     * @param int $id
+     */
+
 
     /**
      * @return int
@@ -299,7 +314,7 @@ class User implements UserInterface
 
     public function __toString(): string
     {
-        return $this->email;
+        return (string)$this->getId();
     }
 
 }
