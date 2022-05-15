@@ -1,0 +1,26 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}TableRestaurant{% endblock %}
+
+{% block body %}
+    <h1>TableRestaurant</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Restaurant</th>
+                <td>{{ table_restaurant.idRestaurant.nom }}</td>
+            </tr>
+            <tr>
+                <th>TypeTable</th>
+                <td>{{ table_restaurant.typeTable }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_table_restaurant_index') }}">back to list</a>
+
+    <a href="{{ path('app_table_restaurant_edit', {'idTable': table_restaurant.idTable}) }}">edit</a>
+
+    {{ include('table_restaurant/_delete_form.html.twig') }}
+{% endblock %}

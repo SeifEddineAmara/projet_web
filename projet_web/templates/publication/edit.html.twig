@@ -1,0 +1,18 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}Edit Publication{% endblock %}
+
+{% block body %}
+<div style="margin-left: 250px">
+<br>
+    <br>
+    <br>
+    <br>
+    <br>
+    {{ include('publication/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <td><a href="{{ path('app_publication_index') }}" ><button class="btn btn-danger btn-xs" style="margin-left: 250px;width:120px">Retour</button></a></td>
+
+
+</div>
+{% endblock %}

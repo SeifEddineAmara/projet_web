@@ -1,0 +1,37 @@
+
+{% block body %}
+
+    <br>
+    <br>
+    <br>
+    <h1>Restaurant index</h1>
+
+    <table class="table" style="text-align: center" >
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Adresse</th>
+            <th>Domaine</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for restaurant in restaurants %}
+            <tr>
+                <td>{{ restaurant.id }}</td>
+                <td>{{ restaurant.nom }}</td>
+                <td>{{ restaurant.adresse }}</td>
+                <td>{{ restaurant.domaine }}</td>
+                <td>{{ restaurant.nb }}</td>
+
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

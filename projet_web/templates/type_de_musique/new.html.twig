@@ -1,0 +1,9 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block body %}
+    <h1>Créer un nouveau Type De Musique</h1>
+
+    {{ include('type_de_musique/_form.html.twig') }}
+
+    <a href="{{ path('app_type_de_musique_index') }}">Retour à la liste</a>
+{% endblock %}

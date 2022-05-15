@@ -1,0 +1,35 @@
+{{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
+<div class="row align-items-center">
+    <div class="col-md-2">
+        <label>Nom Evenement</label>
+    </div>
+    <div class="col-md-2">
+        {{ form_row(form.nomEvenement, {'label' : false}) }}
+    </div>
+</div>
+<div class="row align-items-center">
+    <div class="col-md-2">
+        <label>Date Evenement</label>
+    </div>
+    <div class="col-md-2">
+        {{ form_row(form.dateEvenement, {'label' : false}) }}
+    </div>
+</div>
+<div class="row align-items-center">
+    <div class="col-md-2">
+        <label>Artiste</label>
+    </div>
+    <div class="col-md-2">
+        {{ form_row(form.Artiste, {'label' : false}) }}
+    </div>
+</div>
+<div class="row align-items-center">
+    <div class="col-md-2">
+        <label>Restaurant</label>
+    </div>
+    <div class="col-md-2">
+        {{ form_row(form.Restaurant, {'label' : false}) }}
+    </div>
+</div>
+    <button class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
+{{ form_end(form) }}

@@ -1,0 +1,221 @@
+{% extends 'baseFront.html.twig' %}
+
+{% block title %}New Publication{% endblock %}
+{% block header %}
+    <header role="banner" style="background-color: black">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" >TAP <span style="color: greenyellow">&</span>GO</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarsExample05">
+                    <ul class="navbar-nav ml-auto pl-lg-5 pl-0">
+                        <li class="nav-item">
+                            <a class=" list-unstyled footer-link" href="{{ path('app_user_interface')}}" style="margin-left: 600px">Acceuil Publication</a>
+                        </li>
+                        <li class="nav-item">
+
+                        </li>
+
+
+                    </ul>
+
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item cta-btn">
+
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+    </header>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <title>GoodGames | Suggestions</title>
+
+        <meta name="description" content="GoodGames - Bootstrap template for communities and games store">
+        <meta name="keywords" content="game, gaming, template, HTML template, responsive, Bootstrap, premium">
+        <meta name="author" content="_nK">
+
+        <link rel="icon" type="image/png" href="{{ asset('') }}assets/images/favicon.png">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- START: Styles -->
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7cOpen+Sans:400,700" rel="stylesheet" type="text/css">
+
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/dist/css/bootstrap.min.css') }}">
+
+        <!-- FontAwesome -->
+        <script defer src="{{ asset('assets/vendor/fontawesome-free/js/all.js') }}"></script>
+        <script defer src="{{ asset('assets/vendor/fontawesome-free/js/v4-shims.js') }}"></script>
+
+        <!-- IonIcons -->
+        <link rel="stylesheet" href="{{ asset('assets/vendor/ionicons/css/ionicons.min.css') }}">
+
+        <!-- Flickity -->
+        <link rel="stylesheet" href="{{ asset('assets/vendor/flickity/dist/flickity.min.css') }}">
+
+        <!-- Photoswipe -->
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendor/photoswipe/dist/photoswipe.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendor/photoswipe/dist/default-skin/default-skin.css') }}">
+
+        <!-- Seiyria Bootstrap Slider -->
+        <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap-slider/dist/css/bootstrap-slider.min.css') }}">
+
+        <!-- Summernote -->
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendor/summernote/dist/summernote-bs4.css') }}">
+
+        <!-- GoodGames -->
+        <link rel="stylesheet" href="{{ asset('assets/css/goodgames.css') }}">
+
+        <!-- Custom Styles -->
+        <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
+
+        <!-- END: Styles -->
+
+        <!-- jQuery -->
+        <script src="{{ asset('assets/vendor/jquery/dist/jquery.min.js') }}"></script>
+
+
+    </head>
+
+    <!-- END header -->
+{% endblock %}
+
+{% block body %}
+    <br>
+    <br>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+<div class="nk-main">
+    <div class="container">
+    <ul class="nk-forum nk-forum-topic">
+        <li>
+            <div class="nk-forum-topic-author">
+                <a href="#">
+                    <img src="{{ asset('assets/images/avatar-1.jpg') }}" alt="Hitman">
+                </a>
+                <div class="nk-forum-topic-author-name" title="Hitman">
+                    <a href="#">Chikaa</a>
+                </div>
+                <div class="nk-forum-topic-author-role">Admin</div>
+                <div class="nk-forufm-topic-author-since">
+                    Membre Depuis Janvier 17, 2018
+                </div>
+            </div>
+            <div class="nk-forum-topic-content">
+
+
+                <div class="nk-forum-topic-attachments">
+                    {{ include('user_interface/_form.html.twig') }}
+
+                    <div class="nk-forum-topic-footer">
+
+                        <p><span class="nk-forum-topic-date" id='date-time'></span><script>
+                                var dt = new Date();
+                                document.getElementById('date-time').innerHTML=dt;
+                            </script></p>
+
+                    </div>
+                    <br>
+
+                </div>
+            </div>
+
+        </li>
+
+    </ul>
+    </div>
+
+
+    <!-- START: Scripts
+
+    -->
+
+    <!-- Object Fit Polyfill -->
+    <script src="{{ asset('assets/vendor/gsap/src/minified/plugins/ScrollToPlugin.min.js') }}x"></script>
+
+    <!-- GSAP -->
+    <script src="{{ asset('assets/vendor/gsap/src/minified/TweenMax.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/gsap/src/minified/plugins/ScrollToPlugin.min.js') }}"></script>
+
+    <!-- Popper -->
+    <script src="{{ asset('assets/vendor/popper.js/dist/umd/popper.min.js') }}"></script>
+
+    <!-- Bootstrap -->
+    <script src="{{ asset('assets/vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+
+    <!-- Sticky Kit -->
+    <script src="{{ asset('assets/vendor/sticky-kit/dist/sticky-kit.min.js') }}"></script>
+
+    <!-- Jarallax -->
+    <script src="{{ asset('assets/vendor/jarallax/dist/jarallax.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/jarallax/dist/jarallax-video.min.js') }}"></script>
+
+    <!-- imagesLoaded -->
+    <script src="{{ asset('assets/vendor/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>
+
+    <!-- Flickity -->
+    <script src="{{ asset('assets/vendor/flickity/dist/flickity.pkgd.min.js') }}"></script>
+
+    <!-- Photoswipe -->
+    <script src="{{ asset('assets/vendor/photoswipe/dist/photoswipe.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/photoswipe/dist/photoswipe-ui-default.min.js') }}"></script>
+
+    <!-- Jquery Validation -->
+    <script src="{{ asset('assets/vendor/jquery-validation/dist/jquery.validate.min.js') }}"></script>
+
+    <!-- Jquery Countdown + Moment -->
+    <script src="{{ asset('assets/vendor/jquery-countdown/dist/jquery.countdown.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/moment/min/moment.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/moment-timezone/builds/moment-timezone-with-data.min.js') }}"></script>
+
+    <!-- Hammer.js -->
+    <script src="{{ asset('assets/vendor/hammerjs/hammer.min.js') }}"></script>
+
+    <!-- NanoSroller -->
+    <script src="{{ asset('assets/vendor/nanoscroller/bin/javascripts/jquery.nanoscroller.js') }}"></script>
+
+    <!-- SoundManager2 -->
+    <script src="{{ asset('assets/vendor/soundmanager2/script/soundmanager2-nodebug-jsmin.js') }}"></script>
+
+    <!-- Seiyria Bootstrap Slider -->
+    <script src="{{ asset('assets/vendor/bootstrap-slider/dist/bootstrap-slider.min.js') }}"></script>
+
+    <!-- Summernote -->
+    <script src="{{ asset('assets/vendor/summernote/dist/summernote-bs4.min.js') }}"></script>
+
+    <!-- nK Share -->
+    <script src="{{ asset('assets/plugins/nk-share/nk-share.js') }}"></script>
+
+    <!-- GoodGames -->
+    <script src="{{ asset('assets/js/goodgames.min.js') }}"></script>
+    <script src="{{ asset('assets/js/goodgames-init.js') }}"></script>
+    <!-- END: Scripts -->
+
+
+    {% if app.session.flashBag.has('info') %}
+        <div class="alert alert-success">
+            {% for msg in app.session.flashBag.get('info') %}
+                {{msg}}
+            {% endfor %}
+        </div>
+    {% endif %}
+
+</div>
+
+{% endblock %}
+

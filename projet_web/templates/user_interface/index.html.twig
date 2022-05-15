@@ -1,0 +1,115 @@
+{% extends 'baseFront.html.twig' %}
+
+{% block title %}{% endblock %}
+{% block body %}
+{#    {% block header %}#}
+{#        <header role="banner">#}
+{#            <nav class="navbar navbar-expand-md navbar-dark bg-dark">#}
+{#                <div class="container">#}
+{#                    <a class="navbar-brand" href="{{ asset('acceuil_user/index.html.twig')}}">TAP <span style="color: greenyellow">&</span>GO</a>#}
+{#                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">#}
+{#                        <span class="navbar-toggler-icon"></span>#}
+{#                    </button>#}
+
+{#                    <div class="collapse navbar-collapse" id="navbarsExample05">#}
+{#                        <ul class="navbar-nav ml-auto pl-lg-5 pl-0">#}
+{#                            <li class="nav-item">#}
+{#                                <a class="nav-link active" href="{{ path('app_user_interface')}}">Home</a>#}
+{#                            </li>#}
+
+{#                            <li class="nav-item dropdown">#}
+{#                                <a class="nav-link dropdown-toggle" href="{{ asset('index.html')}}" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Autres</a>#}
+{#                                <div class="dropdown-menu" aria-labelledby="dropdown04">#}
+{#                                    <a class="dropdown-item" href="{{ path('app_user_interface') }}">Publications</a>#}
+{#                                    <a class="dropdown-item" href="services.html">Commentaires</a>#}
+{#                                    <a class="dropdown-item" href="services.html">Réactions</a>#}
+{#                                </div>#}
+{#                            </li>#}
+
+{#                        </ul>#}
+
+{#                        <ul class="navbar-nav ml-auto">#}
+{#                            <li class="nav-item cta-btn">#}
+{#                                <a class="nav-link" href="{{ path('savePub',{'idUser':56}) }} " > Publier </a>#}
+{#                                <!-- here i need the id of the connected user -->#}
+{#                            </li>#}
+{#                        </ul>#}
+
+{#                    </div>#}
+{#                </div>#}
+{#            </nav>#}
+{#        </header>#}
+
+{#        <!-- END header -->#}
+{#    {% endblock %}#}
+
+    <section class="home-slider owl-carousel">
+        {% for publication in publications %}
+            <div class="slider-item" style="background-image: url('{{ asset("/img/hero_1.jpg") }}');">
+                <div id="publication">
+                    <section class="section element-animate">
+
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+
+
+
+                        <div class="container" style="background-color: white;border-radius: 10px 100px / 120px;">
+                            <h1>Sujet publié(e) par  {{ publication.getIdUser().getName()|upper }} {{ publication.getIdUser().getLastname() }} </h1>
+                            <div class="row">
+                                <p style="font-style: italic;font-size: 24px;width: 85%;color: #0b0b0b">  &nbsp &ldquo;  {{ publication.LibellePublication() }} &rdquo;  </p>
+                                {% set a=publication.nbReaction %}
+                                <span>
+
+                       <a id="firstStar" href="{{ path('app_reaction_new') }}"> <i class="fa fa-star" > </i> </a>
+                        <a id="secondStar" href=""> <i class="fa fa-star" > </i> </a>
+                        <a id="thirdtStar" href=""> <i class="fa fa-star" > </i> </a>
+                        <a id="forthStar" href=""> <i class="fa fa-star" > </i> </a>
+                        <a id="fifthStar" href=""> <i class="fa fa-star" > </i> </a>
+
+                    </span>
+                                <div class="col-md-4">
+
+                                    <blockquote class="testimonial">
+
+                                        <hr style="color: #0b0b0b">
+                                        <div class="d-flex author">
+
+                                            <img src="img/user.png" alt="" class="mr-4" style="opacity: 0.7">
+                                            <div class="author-info">
+                                                <h4>{{ publication.getIdUser().getLastname() }} {{ publication.getIdUser().getName() }} </h4>
+
+                                                <p><a href="{{ path('acceuil_commentaireByIdPublication',{'idPublication':publication.getIdPublication(),
+                                                        'idUser':publication.getIdUser().getId()}) }}"
+                                                      class="btn btn-white btn-outline-white" style="background-color: greenyellow">Commenter</a></p>
+                                            </div>
+                                        </div>
+                                    </blockquote>
+                                </div>
+
+                            </div>
+                        </div>
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item cta-btn">
+                                <a href="{{ path('savePub',{'idUser':56}) }} "><button class="btn-primary" style="margin-left: 45% ; width: 150px; border-radius: 30px; margin-top: 20px">Publier</button></a>
+                            </li>
+
+
+
+                        </ul>
+
+                    </section> <!-- .section -->
+
+                </div>
+
+
+            </div>
+
+        {% endfor %}
+
+    </section>
+
+{% endblock %}
+

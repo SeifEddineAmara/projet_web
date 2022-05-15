@@ -1,0 +1,79 @@
+{% extends 'baseFront.html.twig' %}
+
+{% block stylesheets %}
+    <style>
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            grid-gap: 20px;
+        }
+        .gridCarte {
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            grid-gap: 20px;
+        }
+        .vl {
+            border-left: 6px solid gray;
+            height: 100%;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <section class="home-slider owl-carousel">
+        <div class="slider-item" style="background-image: url('{{ asset('front/img/hero_1.jpg') }}');">
+
+            <div class="container">
+                <div class="row slider-text align-items-center justify-content-center">
+                    <div class="col-md-8 text-center col-sm-12 element-animate">
+                        <h1>TAP&GO</h1>
+                        <p class="mb-5">AVEC TAP&GO , VOUS POUVEZ FAIRE TOUS VOTRE RÉSERVATION EN LIGNE POUR UNE SIMPLE CLICK</p>
+                        <p><a href="#" class="btn btn-white btn-outline-white">Faites Votre Premier Pas</a></p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="slider-item" style="background-image: url('{{ asset('front/img/hero_2.jpg') }}');">
+            <div class="container">
+                <div class="row slider-text align-items-center justify-content-center">
+                    <div class="col-md-8 text-center col-sm-12 element-animate">
+                        <h1>TAP&GO site de Réservation en Ligne</h1>
+                        <p class="mb-5">Avec TAP&Go vous pouvez S'inscrire au diffèrants cours par des chefs professionnels</p>
+                        <p><a href="#" class="btn btn-white btn-outline-white">Consulter la liste des cours</a></p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+    <section class="section bg-light element-animate">
+        <div class="container">
+            <div class="col-md-12 text-center heading-wrap">
+                <h2>Evenements</h2>
+                {#                <span class="back-text">Events</span>#}
+                <hr>
+
+                <div class="row align-items-center">
+                    <div class="col-md-10">
+                        {% include 'evenement_browser/_filter.html.twig' with {form: form} only%}
+                    </div>
+                    <div class="col-md-2">
+                        <a href="{{ path('app_evenement_browser_stats') }}"><button class="btn-primary">Statistiques</button></a>
+                    </div>
+                </div>
+
+                <hr>
+                <div class="grid">
+                    {% for evenement in evenements %}
+                        {% include'evenement_browser/_evenementCarte.html.twig' with {evenement : evenement} only %}
+                    {% endfor %}
+                </div>
+
+            </div>
+        </div>
+    </section>
+{#    {{ include('evenement_browser/pieChart.html.twig') }}#}
+{% endblock %}

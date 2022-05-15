@@ -1,0 +1,41 @@
+{{ form_start(form, {attr: {'novalidate': 'novalidate'}}) }}
+    <div class="row align-items-center">
+        <div class="col-md-9">
+            <div class="row">
+                <div class="col-md-6">
+                    {{ form_row(form.nom, {'label': false}) }}
+                </div>
+                <div class="col-md-6">
+                    <div class="row align-items-center">
+                        <div class="col-md-2">
+                            <label>Artiste</label>
+                        </div>
+                        <div class="col-md-8">
+                            {{ form_row(form.artiste, {'label': false}) }}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+               <div class="col-md-6">
+                   {{ form_row(form.date, {'label': false}) }}
+               </div>
+                <div class="col-md-6">
+                    <div class="row align-items-center">
+                        <div class="col-md-2">
+                            <label>Restaurant</label>
+                        </div>
+                        <div class="col-md-9">
+                            {{ form_row(form.restaurant, {'label': false}) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <button type="submit" class="btn btn-primary w-100">Recherche</button>
+            <button type="reset" class="btn btn-secondary w-100">Réinitialiser</button>
+        </div>
+    </div>
+{{ form_end(form) }}

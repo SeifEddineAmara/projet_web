@@ -1,0 +1,50 @@
+{% extends 'baseBack.html.twig' %}
+
+
+{% block body %}
+    <div class="row align-items-center">
+        <div class="col-md-10">
+            <h1>Evenements</h1>
+        </div>
+    </div>
+
+    <hr>
+    <div class="row align-items-center">
+        {% include 'evenement/_filter.html.twig' with {form: form} only %}
+    </div>
+    <hr>
+
+    <table class="table">
+        <thead>
+            <tr>
+{#                <th>IdEvenement</th>#}
+                <th>Nom</th>
+                <th>Date</th>
+                <th>Artiste</th>
+                <th>Restaurant</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for evenement in evenements %}
+            <tr>
+{#                <td>{{ evenement.idEvenement }}</td>#}
+                <td>{{ evenement.nomEvenement }}</td>
+                <td>{{ evenement.dateEvenement ? evenement.dateEvenement|date('Y-m-d') : '' }}</td>
+                <td>{{ evenement.getArtiste() }}</td>
+                <td>{{ evenement.getRestaurant() }}</td>
+                <td>
+                    <a href="{{ path('app_evenement_show', {'idEvenement': evenement.idEvenement}) }}"><button class="btn btn-success btn-xs"><i class="fa fa-info"></i></button></a>
+                    <a href="{{ path('app_evenement_edit', {'idEvenement': evenement.idEvenement}) }}"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_evenement_new') }}">Créer</a>
+{% endblock %}

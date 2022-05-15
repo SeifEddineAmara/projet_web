@@ -1,0 +1,16 @@
+{{ form_start(form, {attr: {'novalidate': 'novalidate'}}) }}
+    <div class="row align-items-center">
+        <div class="col-md-5">
+            {{ form_row(form.nom, {'label' : false}) }}
+        </div>
+        <div class="col-md-3">
+            {{ form_row(form.Genre, {'label' : false}) }}
+        </div>
+        <div class="col-md-1">
+            <button type="submit" class="btn btn-primary w-100">Recherche</button>
+        </div>
+        <div class="col-md-1">
+            <button type="reset" class="btn btn-secondary w-100">Réinitialiser</button>
+        </div>
+    </div>
+{{ form_end(form) }}
